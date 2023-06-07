@@ -1,4 +1,4 @@
-package nc7.javaproject.Preference Survey App;
+package nc7.javaproject.PreferenceSurveyApp;
 
 import nc7.javaproject.util.Prompt;
 
