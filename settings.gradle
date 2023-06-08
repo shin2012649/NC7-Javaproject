@@ -14,3 +14,5 @@ plugins {
 
 rootProject.name = 'NC7-Javaproject'
 include('app')
+include('app-10')
+include('app-11')
