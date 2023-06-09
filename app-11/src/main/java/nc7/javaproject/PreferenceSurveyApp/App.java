@@ -13,24 +13,26 @@ public class App {
 
     while (true) {
       String menuNo = Prompt.inputString("메인> ");
-      if (menuNo.equals("6")) {
-        break;
+      if (menuNo.equals("8")) {
+          break;
       } else if (menuNo.equals("menu")) {
-        printMenu();
+          printMenu();
       } else if (menuNo.equals("1")) {
-        ParticipantHandler.inputParticipant();
+          ParticipantHandler.inputParticipant();
       } else if (menuNo.equals("2")) {
-        ParticipantHandler.printParticipants();
+          ParticipantHandler.printParticipants();
       } else if (menuNo.equals("3")) {
-        ParticipantHandler.viewParticipant();
+          ParticipantHandler.viewParticipant();
       } else if (menuNo.equals("4")) {
-        ParticipantHandler.updateParticipant();
+          ParticipantHandler.updateParticipant();
       } else if (menuNo.equals("5")) {
-        ParticipantHandler.deleteParticipant();
-      } else {
-        System.out.println(menuNo);
+          ParticipantHandler.deleteParticipant();
+      } else if (menuNo.equals("6")) {
+          ParticipantHandler.printRatingCounts();
+      } else if (menuNo.equals("7")) {
+          ParticipantHandler.printAverageScore();
       }
-    }
+  }
 
     Prompt.close();
   }
@@ -41,11 +43,13 @@ public class App {
     System.out.println("3. 참여자 조회");
     System.out.println("4. 참여자 변경");
     System.out.println("5. 참여자 삭제");
-    System.out.println("6. 종료");
+    System.out.println("6. 평가_참여자 통계");
+    System.out.println("7. 평가_평점 통계");
+    System.out.println("8. 종료");
   }
 
   static void printTitle() {
-    System.out.println("영화 선호도 조사");
+    System.out.println("관객 시사회 평가");
     System.out.println("----------------------------------");
   }
 

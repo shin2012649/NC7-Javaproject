@@ -9,6 +9,9 @@ public class ParticipantHandler {
   static Participant[] participants = new Participant[MAX_SIZE];
   static int userId = 1;
   static int length = 0;
+  static int[] ratingCounts = new int[5];
+  static int totalScore = 0;
+  static int participantCount = 0;
 
   static final char MALE = 'M';
   static final char FEMALE = 'W';
@@ -26,12 +29,32 @@ public class ParticipantHandler {
     p.age = Integer.parseInt(Prompt.inputString("참여자 나이? "));
     p.movieAttendance = Boolean.parseBoolean(Prompt.inputString("영화 A 관람 여부(true/false)? "));
     p.gender = Prompt.inputString("참여자 성별(남자:M, 여자:W)? ").charAt(0);
-    p.movieRating = Integer.parseInt(Prompt.inputString("영화 A에 대한 평가(1-5)? "));
+    p.movieRating = Integer.parseInt(Prompt.inputString("영화 A에 대한 평점(1-5)? "));
+    ratingCounts[p.movieRating - 1]++;
+    totalScore += p.movieRating; // 총 점수 누적
     p.additionalInfo= Prompt.inputString("추가 정보? ");
     p.no = userId++;
+    participantCount++;
     
     participants[length++] = p;
   }
+
+  public static void printRatingCounts() {
+    System.out.println("등급별 선택 횟수:");
+    for (int i = 0; i < ratingCounts.length; i++) {
+        System.out.printf("%d점: %d명\n", i + 1, ratingCounts[i]);
+    }
+  }
+
+  public static void printAverageScore() {
+    if (participantCount != 0) {
+      double averageScore = (double) totalScore / participantCount;
+      System.out.printf("총 점수 평균: %.2f\n", averageScore);
+  } else {
+      System.out.println("참여자가 없습니다.");
+  } 
+  }
+
 
   public static void printParticipants() {
     System.out.println("---------------------------------------");
@@ -60,7 +83,7 @@ public class ParticipantHandler {
       System.out.printf("참여자 이름: %s\n", p.name);
       System.out.printf("참여자 나이: %d\n", p.age);
       System.out.printf("영화 A 관람 여부: %b\n", p.movieAttendance);
-      System.out.printf("참여자 성별(남자(M), 여자(W)): %c\n", toGenderString(p.gender));
+      System.out.printf("참여자 성별(남자(M), 여자(W)): %c\n", (p.gender));
       System.out.printf("영화 A에 대한 평가(1-5): %d\n", p.movieRating);
       System.out.printf("추가 정보: %s\n", p.additionalInfo);
       return;
