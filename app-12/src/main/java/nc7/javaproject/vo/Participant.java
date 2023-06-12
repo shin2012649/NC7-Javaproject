@@ -1,0 +1,69 @@
+package nc7.javaproject.vo;
+
+public class Participant {
+  private int no;
+  private String name;
+  private int age;
+  private boolean movieAttendance;
+  private char gender;
+  private int movieRating;
+  private String additionalInfo;
+
+  public int getNo() {
+    return no;
+  }
+
+  public void setNo(int no) {
+    this.no = no;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public int getAge() {
+    return age;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  public boolean isMovieAttendance() {
+    return movieAttendance;
+  }
+
+  public void setMovieAttendance(boolean movieAttendance) {
+    this.movieAttendance = movieAttendance;
+  }
+
+  public char getGender() {
+    return gender;
+  }
+
+  public void setGender(char gender) {
+    this.gender = gender;
+  }
+
+  public int getMovieRating() {
+    return movieRating;
+  }
+
+  public void setMovieRating(int movieRating) {
+    this.movieRating = movieRating;
+  }
+
+  public String getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+  public void setAdditionalInfo(String additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
+}
+
+
