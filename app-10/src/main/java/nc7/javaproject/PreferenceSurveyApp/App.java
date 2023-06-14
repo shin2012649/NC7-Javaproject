@@ -1,6 +1,5 @@
 package nc7.javaproject.PreferenceSurveyApp;
 
-import nc7.javaproject.PreferenceSurveyApp.ParticipantHandler;
 import nc7.javaproject.util.Prompt;
 
 public class App {
