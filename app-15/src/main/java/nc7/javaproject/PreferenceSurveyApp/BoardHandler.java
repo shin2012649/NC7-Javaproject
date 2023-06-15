@@ -29,11 +29,11 @@ public class BoardHandler {
       } else if (menuNo.equals("1")) {
           this.inputBoard();
       } else if (menuNo.equals("2")) {
-          this.printBoard();
+          this.printBoards();
       } else if (menuNo.equals("3")) {
           this.viewBoard();
       } else if (menuNo.equals("4")) {
-          this.updateBoardt();
+          this.updateBoard();
       } else if (menuNo.equals("5")) {
           this.deleteBoard();
       } else {
@@ -51,7 +51,7 @@ public class BoardHandler {
     System.out.println("0. 메인");
   }
 
-  public  void inputBoard() {
+  private  void inputBoard() {
     if (!this.available()) {
       System.out.println("더이상 입력할 수 없습니다!");
       return;

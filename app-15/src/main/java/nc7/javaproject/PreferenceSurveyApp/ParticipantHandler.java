@@ -16,7 +16,7 @@ public class ParticipantHandler {
 
   public ParticipantHandler(Prompt prompt, String title){
     this.prompt = prompt;
-    this.titile = title;
+    this.title = title;
   }
 
   public void execute(){
@@ -25,11 +25,11 @@ public class ParticipantHandler {
     while (true) {
       String menuNo = prompt.inputString("%s> ", this.title);
       if (menuNo.equals("0")) {
-          break;
+          return;
       } else if (menuNo.equals("menu")) {
           printMenu();
       } else if (menuNo.equals("1")) {
-          this.inputParticipant();
+        this.inputParticipant();
       } else if (menuNo.equals("2")) {
         this.printParticipants();
       } else if (menuNo.equals("3")) {
@@ -58,7 +58,7 @@ public class ParticipantHandler {
     System.out.println("7. 평점 통계");
   }
 
-  public void inputParticipant() {
+  private void inputParticipant() {
     if (!this.available()) {
       System.out.println("더 이상 입력할 수 없습니다!");
       return;
