@@ -1,4 +1,4 @@
-package nc7.javaproject.PreferenceSurveyApp.Handler;
+package nc7.javaproject.util;
 import nc7.javaproject.vo.Participant;
 
 public class ArrayList {
@@ -45,10 +45,9 @@ public void setTotalScore(int i) {
 }
 
 public void setParticipantCount(int i) {
-  // TODO Auto-generated method stub
+  
   
 }
-
 
 
 public Object[] list() {

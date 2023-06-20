@@ -1,11 +1,12 @@
 package nc7.javaproject.PreferenceSurveyApp.Handler;
+import nc7.javaproject.util.LinkedList;
 import nc7.javaproject.util.Prompt;
 import nc7.javaproject.vo.Participant;
 
 
 public class ParticipantHandler implements Handler {
 
-  private ArrayList  list = new ArrayList();
+  private LinkedList list = new LinkedList();
   private Prompt prompt;
   private String title;
   
@@ -35,8 +36,6 @@ public class ParticipantHandler implements Handler {
       } else if (menuNo.equals("5")) {
         this.deleteParticipant();
       } else if (menuNo.equals("6")) {
-        this.printRatingCounts();
-      } else if (menuNo.equals("7")) {
         this.printAverageScore();
       } else {
         System.out.println("메뉴 번호가 옳지 않습니다!");
@@ -50,8 +49,7 @@ public class ParticipantHandler implements Handler {
     System.out.println("3. 조회");
     System.out.println("4. 변경");
     System.out.println("5. 삭제");
-    System.out.println("6. 통계");
-    System.out.println("7. 평점 통계");
+    System.out.println("6. 평점 통계");
   }
 
   private void inputParticipant() {
@@ -65,23 +63,9 @@ public class ParticipantHandler implements Handler {
     p.setAdditionalInfo(this.prompt.inputString("추가 정보? "));
     
 
-    if (!this.list.add(p)) {
-      System.out.println("입력 실패입니다!");
+    this.list.add(p);
     }
-    this.list.getRatingCounts()[p.getMovieRating() - 1]++;
-    this.list.setTotalScore(this.list.getTotalScore() + p.getMovieRating());
-    this.list.setParticipantCount(this.list.getParticipantCount() + 1);
-    
-  }
 
-  private void printRatingCounts() {
-    int[] ratingCounts = list.getRatingCounts();
-
-    System.out.println("등급별 선택 횟수:");
-    for (int i = 0; i < ratingCounts.length; i++) {
-      System.out.printf("%d점: %d명\n", i + 1, ratingCounts[i]);
-    }
-  }
 
   private void printAverageScore() {
     int totalScore = list.getTotalScore();
@@ -100,7 +84,7 @@ public class ParticipantHandler implements Handler {
     System.out.println("번호, 이름 나이, 관람여부, 성별, 평점, 추가정보");
     System.out.println("---------------------------------------");
 
-    Object[] arr = this.list.list();
+    Object[] arr = this.list.getList();
     for (Object obj : arr){
       Participant p = (Participant)obj;
       System.out.printf("%d, %s, %d, %s, %s, %d, %s\n",
@@ -111,7 +95,7 @@ public class ParticipantHandler implements Handler {
 
   private void viewParticipant() {
     int participantNo = this.prompt.inputInt("조회할 참여자 번호? ");
-    Participant p = (Participant)this.list.get(new Participant(participantNo));
+    Participant p = (Participant)this.list.retrieve(new Participant(participantNo));
       if (p == null) {
         System.out.println("해당 번호의 참여자를 찾을 수 없습니다.");
         return;
@@ -130,7 +114,7 @@ public class ParticipantHandler implements Handler {
 
   private  void updateParticipant() {
     int participantNo = this.prompt.inputInt("변경할 참여자 번호? ");
-      Participant p =(Participant)this.list.get(new Participant(participantNo));
+      Participant p =(Participant)this.list.retrieve(new Participant(participantNo));
       if (p == null){
         System.out.println("해당 번호의 참여자를 찾을 수 없습니다.");
         return;
@@ -172,7 +156,7 @@ public class ParticipantHandler implements Handler {
   }
 
   private void deleteParticipant() {
-    if (!this.list.delete(this.prompt.inputInt("삭제할 참여자 번호? "))){
+    if (!this.list.remove(this.prompt.inputInt("삭제할 참여자 번호? "))){
       System.out.println("해당 번호의 참여자가 없습니다!");
     }
   }
