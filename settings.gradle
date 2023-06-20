@@ -14,13 +14,4 @@ plugins {
 
 rootProject.name = 'NC7-Javaproject'
 include('app')
-include('app-10')
-include('app-11')
-include('app-13')
-include('app-14')
-include('app-15')
-include('app-16')
-include('app-18')
-include('app-19')
-include('app-20')
-include('app-17')
+include('app-21')
