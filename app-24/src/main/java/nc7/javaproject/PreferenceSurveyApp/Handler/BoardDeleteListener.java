@@ -4,13 +4,12 @@ import nc7.javaproject.util.BreadcrumbPrompt;
 import nc7.javaproject.util.List;
 import nc7.javaproject.vo.Board;
 
-public class BoardDeleteListener extends AbstractBoardListener{
+public class BoardDeleteListener extends AbstractBoardListener {
 
-  public BoardDeleteListener(List list){
+  public BoardDeleteListener(List<Board> list) {
     super(list);
   }
 
- 
   @Override
   public void service(BreadcrumbPrompt prompt) {
     if (!this.list.remove(new Board(prompt.inputInt("번호? ")))) {

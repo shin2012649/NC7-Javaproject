@@ -5,11 +5,9 @@ import nc7.javaproject.vo.Board;
 
 public class BoardAddListener extends AbstractBoardListener {
 
-  public BoardAddListener(List list){
+  public BoardAddListener(List<Board> list) {
     super(list);
   }
-
-
 
   @Override
   public void service(BreadcrumbPrompt prompt) {

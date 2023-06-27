@@ -6,7 +6,7 @@ import nc7.javaproject.vo.Participant;
 
 public class ParticipantAddListener extends AbstractParticipantListener {
   
-  public ParticipantAddListener(List list){
+  public ParticipantAddListener(List<Participant> list){
     super(list);
   }
 

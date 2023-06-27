@@ -1,10 +1,12 @@
 package nc7.javaproject.util;
 
-public interface List {
-  boolean add(Object value);
-  Object get(int index);
+public interface List<E> {
+  boolean add(E value);
+  E get(int index);
   Object[] toArray();
-  boolean remove(Object value);
-  Object remove(int index);
+  <T> T[] toArray(T[] arr);
+  boolean remove(E value);
+  E remove(int index);
   int size();
+  Iterator<E> iterator();
 }

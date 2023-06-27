@@ -8,7 +8,7 @@ public class ParticipantDetailListener extends AbstractParticipantListener{
 
 
   
-  public ParticipantDetailListener(List list){
+  public ParticipantDetailListener(List<Participant> list){
     super(list);
   }
 

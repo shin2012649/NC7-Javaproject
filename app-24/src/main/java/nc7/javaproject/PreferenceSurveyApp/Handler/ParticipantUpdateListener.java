@@ -6,7 +6,7 @@ import nc7.javaproject.vo.Participant;
 
 public class ParticipantUpdateListener extends AbstractParticipantListener{
 
-  public ParticipantUpdateListener(List list){
+  public ParticipantUpdateListener(List<Participant> list){
     super(list);
   }
 
@@ -14,6 +14,7 @@ public class ParticipantUpdateListener extends AbstractParticipantListener{
   @Override
   public void service(BreadcrumbPrompt prompt) {
     int participantNo = prompt.inputInt("변경할 참여자 번호? ");
+    
     Participant p = this.findBy(participantNo);
     if (p == null){
       System.out.println("해당 번호의 참여자를 찾을 수 없습니다.");

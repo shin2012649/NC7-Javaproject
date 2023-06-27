@@ -6,7 +6,7 @@ import nc7.javaproject.vo.Participant;
 
 public class ParticipantDeleteListener extends AbstractParticipantListener {
 
-  public ParticipantDeleteListener(List list){
+  public ParticipantDeleteListener(List<Participant> list){
     super(list);
   }
 

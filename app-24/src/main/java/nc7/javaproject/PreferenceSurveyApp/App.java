@@ -18,15 +18,17 @@ import nc7.javaproject.util.BreadcrumbPrompt;
 import nc7.javaproject.util.LinkedList;
 import nc7.javaproject.util.Menu;
 import nc7.javaproject.util.MenuGroup;
+import nc7.javaproject.vo.Board;
+import nc7.javaproject.vo.Participant;
 
 
 public class App {
 
   public static void main(String[] args) {
 
-    ArrayList participantList = new ArrayList();
-    LinkedList boardList = new LinkedList();
-    LinkedList readingList= new LinkedList();
+    ArrayList<Participant> participantList = new ArrayList<>();
+    LinkedList<Board> boardList = new LinkedList<>();
+    LinkedList<Board> readingList = new LinkedList<>();
     
     BreadcrumbPrompt prompt = new BreadcrumbPrompt();
 
