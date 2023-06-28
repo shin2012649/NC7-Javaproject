@@ -24,7 +24,6 @@ import nc7.javaproject.util.MenuGroup;
 import nc7.javaproject.vo.Board;
 import nc7.javaproject.vo.Participant;
 
-
 public class App {
   
   ArrayList<Participant> participantList = new ArrayList<>();
@@ -145,6 +144,7 @@ public class App {
       
     } catch (Exception e) {
       System.out.println("참여자 정보를 읽는 중 오류 발생!");
+      e.printStackTrace();
     }
   }
   
@@ -199,6 +199,7 @@ public class App {
 
     } catch (Exception e) {
       System.out.println(filename + " 파일을 읽는 중 오류 발생!");
+      e.printStackTrace();
     }
   }
     
@@ -206,7 +207,7 @@ public class App {
     try {
       FileOutputStream out = new FileOutputStream("participant.data");
 
-      // 저장할 데이터의 개수를 먼저 출력한다.
+    
       int size = participantList.size();
       out.write(size >> 8);
       out.write(size);
@@ -219,11 +220,11 @@ public class App {
         out.write(no);
 
         byte[] bytes = participant.getName().getBytes("UTF-8");
-        // 출력할 바이트의 개수를 2바이트로 표시한다.
+        
         out.write(bytes.length >> 8);
         out.write(bytes.length);
 
-        // 문자열의 바이트를 출력한다.
+  
         out.write(bytes);
         
         
@@ -259,6 +260,7 @@ public class App {
 
     } catch (Exception e) {
       System.out.println("회원 정보를 저장하는 중 오류 발생!");
+      e.printStackTrace();
     }
   }
   
@@ -266,7 +268,7 @@ public class App {
     try {
       FileOutputStream out = new FileOutputStream(filename);
 
-      // 저장할 데이터의 개수를 먼저 출력한다.
+  
       int size = list.size();
       out.write(size >> 8);
       out.write(size);
@@ -319,6 +321,7 @@ public class App {
 
     } catch (Exception e) {
       System.out.println(filename + " 파일을 저장하는 중 오류 발생!");
+      e.printStackTrace();
     }
   }
 }
