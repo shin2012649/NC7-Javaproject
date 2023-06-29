@@ -138,7 +138,8 @@ public class App {
         participantList.add(participant);
       }
       
-      Participant.userId = participantList.get(participantList.size() - 1).getNo() + 1;
+      Participant.userId = participantList.size()==0? 
+          Participant.userId : participantList.get(participantList.size() - 1).getNo() + 1;
 
       in.close();
       
@@ -191,7 +192,9 @@ public class App {
         list.add(board);
       }
 
-      Board.boardNo = Math.max(
+      
+      
+      Board.boardNo = list.size()==0? Board.boardNo : Math.max(
           Board.boardNo,
           list.get(list.size() - 1).getNo() + 1);
 
