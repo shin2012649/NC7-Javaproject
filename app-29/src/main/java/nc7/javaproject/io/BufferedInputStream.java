@@ -8,8 +8,8 @@ public class BufferedInputStream extends InputStream {
   InputStream original;
 
   byte[] buf = new byte[8192];
-  int size; // 배열에 저장되어 있는 바이트의 수
-  int cursor; // 바이트 읽은 배열의 위치
+  int size; 
+  int cursor; 
 
   public BufferedInputStream(InputStream original) {
     this.original = original;
@@ -21,8 +21,8 @@ public class BufferedInputStream extends InputStream {
       return -1;
     }
 
-    if (cursor == size) { // 바이트 배열에 저장되어 있는 데이터를 모두 읽었다면,
-      if ((size = original.read(buf)) == -1) { // 다시 파일에서 바이트 배열로 데이터를 왕창 읽어 온다.
+    if (cursor == size) { 
+      if ((size = original.read(buf)) == -1) {
         return -1;
       }
       cursor = 0;

@@ -33,9 +33,7 @@ public class App {
   ArrayList<Participant> participantList = new ArrayList<>();
   LinkedList<Board> boardList = new LinkedList<>();
   LinkedList<Board> readingList = new LinkedList<>();
-  
   BreadcrumbPrompt prompt = new BreadcrumbPrompt();
-  
   MenuGroup mainMenu = new MenuGroup("메인");
   
   public App() {

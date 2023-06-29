@@ -16,11 +16,11 @@ public class BufferedOutputStream extends OutputStream {
 
   @Override
   public void write(int b) throws IOException {
-    if (cursor == buf.length) { // 버퍼가 다 찼다면,
-      original.write(buf); // 버퍼에 들어있는 데이터를 한 번에 출력한다.
-      cursor = 0; // 다시 커서를 초기화시킨다.
+    if (cursor == buf.length) { 
+      original.write(buf); 
+      cursor = 0; 
     }
-    buf[cursor++] = (byte) b; // 버퍼에 빈 공간이 있다면 버퍼에 저장한다.
+    buf[cursor++] = (byte) b; 
   }
 
   @Override

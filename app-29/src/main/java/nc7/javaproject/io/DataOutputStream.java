@@ -49,7 +49,7 @@ public class DataOutputStream extends OutputStream {
     this.write((int)(v >> 8));
     this.write((int) v);
   }
-
+  
   public void writeChar(int v) throws IOException {
     this.write(v >> 8);
     this.write(v);
