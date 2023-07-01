@@ -62,7 +62,6 @@ public class App {
   }
   
   private void loadData() {
-    
     loadCsv("participant.csv", participantList, Participant.class);
     loadCsv("board.csv", boardList, Board.class);
     loadCsv("reading.csv", readingList, Board.class);

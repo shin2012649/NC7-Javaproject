@@ -3,7 +3,6 @@ package nc7.javaproject.vo;
 import java.io.Serializable;
 
 public class Participant implements Serializable, CsvObject {
-
   private static final long serialVersionUID = 1L;
   
   public static int userId = 1;
@@ -27,64 +26,86 @@ public class Participant implements Serializable, CsvObject {
     this.no = no;
   }
   
-  public static Participant fromCsv(String csv) {
-    String[] values = csv.split(",");
-    
-    Participant participant = new Participant(Integer.parseInt(values[0]));
-    participant.setName(values[1]);
-    participant.setAge(Integer.parseInt(values[2]));
-    participant.setMovieAttendance(values[3]);
-    participant.setGender(values[4].charAt(0));
-    participant.setMovieRating(Integer.parseInt(values[5]));
-    participant.setAdditionalInfo(values[6]);
-    
-    if(Participant.userId <= participant.getNo()) {
-      Participant.userId = participant.getNo() + 1;
-    }
-    
-    return participant;
-  }
-    
-//  }
-  
 //  public static Participant fromCsv(String csv) {
 //    String[] values = csv.split(",");
 //    
-//    if (values.length >= 7) {
-//        Participant participant = new Participant(Integer.parseInt(values[0]));
-//        participant.setName(values[1]);
-//        participant.setAge(Integer.parseInt(values[2]));
-//        participant.setMovieAttendance(values[3]);
-//        participant.setGender(values[4].charAt(0));
-//
-//        if (!values[5].isEmpty()) {
-//            try {
-//                participant.setMovieRating(Integer.parseInt(values[5]));
-//            } catch (NumberFormatException e) {
-//                // 처리할 예외 발생 시 작업을 수행하세요.
-//                // 예를 들어, 기본값을 설정하거나 오류 메시지를 출력할 수 있습니다.
-//                participant.setMovieRating(0); // 기본값 설정 예시
-//                System.out.println("잘못된 영화 평점 값입니다."); // 오류 메시지 출력 예시
-//            }
-//        }
-//
-//        participant.setAdditionalInfo(values[6]);
-//
-//        if (Participant.userId <= participant.getNo()) {
-//          Participant.userId = participant.getNo() + 1;
-//      }
-//
-//      return participant;
-//  } else {
-//      // values 배열이 충분한 요소를 갖지 않는 경우 처리
-//      throw new IllegalArgumentException("잘못된 CSV 형식입니다.");
+//    // 유효성 검사: values[0]이 공백 문자를 포함하는지 확인하고 있다면 trim()을 사용하여 앞뒤 공백 제거
+////    String value0 = values[0].trim();
+////
+////    // 유효성 검사: value0이 유효한 숫자인지 확인
+////    if (value0.isEmpty() || !value0.matches("\\d+")) {
+////      throw new IllegalArgumentException("Invalid value for participant number: " + value0);
+////    }
+//    
+//    
+//    Participant participant = new Participant(Integer.parseInt(values[0]));
+////    Participant participant = new Participant(Integer.parseInt(values[0].trim()));
+//    participant.setName(values[1]);
+//    participant.setAge(Integer.parseInt(values[2]));
+//    participant.setMovieAttendance(values[3]);
+//    participant.setGender(values[4].charAt(0));
+//    participant.setMovieRating(Integer.parseInt(values[5]));
+//    participant.setAdditionalInfo(values[6]);
+//    
+//    if(Participant.userId <= participant.getNo()) {
+//      Participant.userId = participant.getNo() + 1;
+//    }
+//    
+//    return participant;
 //  }
-//}
+  public static Participant fromCsv(String csv) {
+    String[] values = csv.split(",");
 
+    // 유효성 검사: values[0]이 공백 문자를 포함하는지 확인하고 있다면 trim()을 사용하여 앞뒤 공백 제거
+    String value0 = values[0].trim();
+
+    // 유효성 검사: value0이 유효한 숫자인지 확인
+    if (value0.isEmpty() || !value0.matches("\\d+")) {
+      throw new IllegalArgumentException("Invalid value for participant number: " + value0);
+    }
+
+    int number = Integer.parseInt(value0);
+    
+    Participant participant = new Participant(number);
+    participant.setName(values[1]);
+    
+    // age 필드에 대한 유효성 검사 추가
+    String value2 = values[2].trim();
+    if (value2.isEmpty() || !value2.matches("\\d+")) {
+      throw new IllegalArgumentException("Invalid value for participant age: " + value2);
+    }
+    int age = Integer.parseInt(value2);
+    participant.setAge(age);
+
+    participant.setMovieAttendance(values[3]);
+    participant.setGender(values[4].charAt(0));
+
+    // movieRating 필드에 대한 유효성 검사 추가
+    String value5 = values[5].trim();
+    if (value5.isEmpty() || !value5.matches("\\d+")) {
+      throw new IllegalArgumentException("Invalid value for movie rating: " + value5);
+    }
+    int movieRating = Integer.parseInt(value5);
+    participant.setMovieRating(movieRating);
+    
+    if (values.length >= 7) {
+      participant.setAdditionalInfo(values[6]);
+    }
+
+
+//    participant.setAdditionalInfo(values[6]);
+
+    if (Participant.userId <= participant.getNo()) {
+      Participant.userId = participant.getNo() + 1;
+    }
+
+    return participant;
+  }
+  
   
   @Override
   public String toCsvString() {
-    return String.format("%d,%s,%d,%s,%c,%d,%s\n",
+    return String.format("%d,%s,%d,%s,%c,%d,%s",
         this.getNo(),
         this.getName(),
         this.getAge(),

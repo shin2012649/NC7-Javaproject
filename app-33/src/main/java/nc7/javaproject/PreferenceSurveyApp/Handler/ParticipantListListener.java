@@ -21,7 +21,7 @@ public class ParticipantListListener extends AbstractParticipantListener {
     Iterator<Participant> iterator = list.iterator();
     while (iterator.hasNext()) {
       Participant p = iterator.next();
-      System.out.printf("%d, %s, %d, %s, %s, %d, %s\n",
+      System.out.printf("%d, %s, %d, %s, %c, %d, %s\n",
       p.getNo(), p.getName(), p.getAge(), p.getMovieAttendance(), p.getGender(),
       p.getMovieRating(), p.getAdditionalInfo());
       System.out.println("---------------------------------------");
