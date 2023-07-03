@@ -1,0 +1,29 @@
+[
+  {
+    "no": 1,
+    "name": "신현우",
+    "age": 29,
+    "movieAttendance": "Y",
+    "gender": "M",
+    "movieRating": 5,
+    "additionalInfo": "없음"
+  },
+  {
+    "no": 2,
+    "name": "봉세환",
+    "age": 24,
+    "movieAttendance": "N",
+    "gender": "M",
+    "movieRating": 1,
+    "additionalInfo": "에헤헿"
+  },
+  {
+    "no": 3,
+    "name": "주현욱",
+    "age": 29,
+    "movieAttendance": "Y",
+    "gender": "M",
+    "movieRating": 3,
+    "additionalInfo": "오호호"
+  }
+]

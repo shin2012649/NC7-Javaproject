@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import nc7.javaproject.PreferenceSurveyApp.Handler.BoardAddListener;
 import nc7.javaproject.PreferenceSurveyApp.Handler.BoardDeleteListener;
 import nc7.javaproject.PreferenceSurveyApp.Handler.BoardDetailListener;
@@ -25,20 +27,20 @@ import nc7.javaproject.PreferenceSurveyApp.Handler.ParticipantUpdateListener;
 import nc7.javaproject.util.BreadcrumbPrompt;
 import nc7.javaproject.util.Menu;
 import nc7.javaproject.util.MenuGroup;
+import nc7.javaproject.vo.AutoIncrement;
 import nc7.javaproject.vo.Board;
-import nc7.javaproject.vo.CsvObject;
 import nc7.javaproject.vo.Participant;
 
 public class App {
-  
+
   ArrayList<Participant> participantList = new ArrayList<>();
   LinkedList<Board> boardList = new LinkedList<>();
   LinkedList<Board> readingList = new LinkedList<>();
-  
+
   BreadcrumbPrompt prompt = new BreadcrumbPrompt();
-  
+
   MenuGroup mainMenu = new MenuGroup("메인");
-  
+
   public App() {
     prepareMenu();
   }
@@ -46,12 +48,12 @@ public class App {
   public static void main(String[] args) {
     new App().execute();
   }
-  
+
   static void printTitle() {
     System.out.println("영화 평가 프로그램");
     System.out.println("----------------------------------");
   }
-  
+
   public void execute() {
     printTitle();
     loadData();
@@ -60,17 +62,17 @@ public class App {
 
     prompt.close();
   }
-  
+
   private void loadData() {
-    loadCsv("participant.csv", participantList, Participant.class);
-    loadCsv("board.csv", boardList, Board.class);
-    loadCsv("reading.csv", readingList, Board.class);
+    loadJson("participant.json", participantList, Participant.class);
+    loadJson("board.json", boardList, Board.class);
+    loadJson("reading.json", readingList, Board.class);
   }
-  
+
   private void saveData() {
-    saveCsv("participant.csv", participantList);
-    saveCsv("board.csv", boardList);
-    saveCsv("reading.csv", readingList);
+    saveJson("participant.json", participantList);
+    saveJson("board.json", boardList);
+    saveJson("reading.json", readingList);
   }
 
   private void prepareMenu() {
@@ -105,56 +107,76 @@ public class App {
     helloMenu.addActionListener(new FootListener());
     mainMenu.add(helloMenu);
   }
-  
- 
-  @SuppressWarnings("unchecked")
-  private <T extends CsvObject> void loadCsv(String filename, List<T> list, Class<T> clazz) {
+
+
+
+  private <T> void loadJson(String filename, List<T> list, Class<T> clazz) {
     try {
-      Method factoryMethod = clazz.getDeclaredMethod("fromCsv", String.class);
-      
       FileReader in0 = new FileReader(filename);
-      BufferedReader in = new BufferedReader(in0); 
+      BufferedReader in = new BufferedReader(in0);
+
+      StringBuilder strBuilder = new StringBuilder();
 
       String line = null;
-      
+
       while((line = in.readLine()) != null) {
-        list.add((T)factoryMethod.invoke(null, line));
-      } 
+        strBuilder.append(line);
+      }
+
       in.close();
+
+      Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+      Collection<T> objects = gson.fromJson(strBuilder.toString(),
+          TypeToken.getParameterized(Collection.class, clazz).getType());
+
+      list.addAll(objects);
+
+//      Class<?>[] interfaces = clazz.getInterfaces();
+//      for (Class<?> info : interfaces) {
+//        if (info == AutoIncrement.class) {
+//          AutoIncrement autoIncrement = (AutoIncrement) list.get(list.size() - 1);
+//          autoIncrement.updateKey();
+//          break;
+      if (!list.isEmpty()) {
+        T lastObject = list.get(list.size() - 1);
+        Class<?>[] interfaces = lastObject.getClass().getInterfaces();
+        for (Class<?> info : interfaces) {
+          if (info == AutoIncrement.class) {
+            AutoIncrement autoIncrement = (AutoIncrement) lastObject;
+            autoIncrement.updateKey();
+            break;
+        }
+      }
+    }
 
     } catch (Exception e) {
       System.out.println(filename + " 파일을 읽는 중 오류 발생!");
       e.printStackTrace();
-    
+
     }
   }
-  
-  private void saveCsv(String filename, List<? extends CsvObject> list) {
-    try {
-      FileWriter out0 = new FileWriter(filename);
-      BufferedWriter out1 = new BufferedWriter(out0); // <== Decorator(장식품) 역할 수행!
-      PrintWriter out = new PrintWriter(out1); // <== Decorator(장식품) 역할 수행!
 
-      for (CsvObject obj : list) {
-        out.println(obj.toCsvString());
-        // Board나 Member 클래스에 필드가 추가/변경/삭제되더라도
-        // 여기 코드를 변경할 필요가 없다.
-        // 이것이 Information Expert 설계를 적용하는 이유다!
-        // 설계를 어떻게 하느냐에 따라 유지보수가 쉬워질 수도 있고,
-        // 어려워질 수도 있다.
-      }
+  private void saveJson(String filename, List<?> list) {
+    try {
+
+      FileWriter out0 = new FileWriter(filename);
+      BufferedWriter out = new BufferedWriter(out0);
+
+      Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").setPrettyPrinting().create();
+      out.write(gson.toJson(list));
+
       out.close();
 
     } catch (Exception e) {
       System.out.println(filename + " 파일을 저장하는 중 오류 발생!");
-      e.printStackTrace();
     }
   }
 }
-  
-  
 
-      
-    
+
+
+
+
+
 
 
