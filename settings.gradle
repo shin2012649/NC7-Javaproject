@@ -15,3 +15,5 @@ plugins {
 rootProject.name = 'NC7-Javaproject'
 include('app')
 include('app-35')
+include('app-client')
+include('app-server')
