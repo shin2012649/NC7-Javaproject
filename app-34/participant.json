@@ -6,7 +6,7 @@
     "movieAttendance": "Y",
     "gender": "M",
     "movieRating": 5,
-    "additionalInfo": "없음"
+    "additionalInfo": "X"
   },
   {
     "no": 2,
@@ -14,8 +14,8 @@
     "age": 24,
     "movieAttendance": "N",
     "gender": "M",
-    "movieRating": 1,
-    "additionalInfo": "에헤헿"
+    "movieRating": 3,
+    "additionalInfo": "오호호호"
   },
   {
     "no": 3,
@@ -23,7 +23,16 @@
     "age": 29,
     "movieAttendance": "Y",
     "gender": "M",
+    "movieRating": 1,
+    "additionalInfo": "허허허허헣"
+  },
+  {
+    "no": 4,
+    "name": "aaa",
+    "age": 20,
+    "movieAttendance": "Y",
+    "gender": "M",
     "movieRating": 3,
-    "additionalInfo": "오호호"
+    "additionalInfo": "aaaa"
   }
 ]

@@ -1,14 +1,17 @@
 package nc7.javaproject.PreferenceSurveyApp.Handler;
-import java.util.Iterator;
 import java.util.List;
+import nc7.javaproject.PreferenceSurveyApp.dao.ParticipantDao;
+import nc7.javaproject.util.ActionListener;
 import nc7.javaproject.util.BreadcrumbPrompt;
 import nc7.javaproject.vo.Participant;
 
 
-public class ParticipantListListener extends AbstractParticipantListener {
+public class ParticipantListListener implements ActionListener {
 
-  public ParticipantListListener( List<Participant> list){
-    super(list);
+  ParticipantDao participantDao;
+  
+  public ParticipantListListener(ParticipantDao participantDao){
+    this.participantDao = participantDao;
   }
 
   @Override
@@ -18,12 +21,10 @@ public class ParticipantListListener extends AbstractParticipantListener {
     System.out.println("-----------------------------------------------");
 
  // 목록에서 데이터를 대신 꺼내주는 객체를 얻는다.
-    Iterator<Participant> iterator = list.iterator();
-    while (iterator.hasNext()) {
-      Participant p = iterator.next();
+    List<Participant> list  = participantDao.list();
+    for (Participant p : list) {
       System.out.printf("%d, %s, %d, %s, %c, %d, %s\n",
-      p.getNo(), p.getName(), p.getAge(), p.getMovieAttendance(), p.getGender(),
-      p.getMovieRating(), p.getAdditionalInfo());
+      p.getNo(), p.getName(), p.getAge(), p.getMovieAttendance(), p.getGender(), p.getMovieRating(), p.getAdditionalInfo());
       System.out.println("-----------------------------------------------");
     }
   }
