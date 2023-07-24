@@ -38,12 +38,11 @@ public class ClientApp {
   public ClientApp(String ip, int port) throws Exception {
     
     Connection con = DriverManager.getConnection("jdbc:mysql://study:1111@localhost:3306/studydb"
-        
         );
 
     this.participantDao = new MySQLParticipantDao(con);
-    this.boardDao = new MysqlBoardDao(con, BOARD_CATEGORY);
-    this.readingDao = new MysqlBoardDao(con, READING_CATEGORY);
+    this.boardDao = new MysqlBoardDao(con, 1);
+    this.readingDao = new MysqlBoardDao(con, 2);
 
     prepareMenu();
   }

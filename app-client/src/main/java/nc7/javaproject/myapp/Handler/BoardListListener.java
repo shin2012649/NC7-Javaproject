@@ -1,4 +1,5 @@
 package nc7.javaproject.myapp.Handler;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import nc7.javaproject.dao.BoardDao;
 import nc7.javaproject.util.ActionListener;
@@ -9,6 +10,7 @@ import nc7.javaproject.vo.Board;
 public class BoardListListener implements ActionListener {
 
   BoardDao boardDao;
+  SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
   public BoardListListener(BoardDao boardDao) {
     this.boardDao = boardDao;
@@ -23,12 +25,12 @@ public class BoardListListener implements ActionListener {
     List<Board> list = boardDao.list();
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %d, %tY-%5$tm-%5$td\n",
+      System.out.printf("%d, %s, %s, %d, %s\n",
           board.getNo(),
           board.getTitle(),
           board.getWriter(),
           board.getViewCount(),
-          board.getCreatedDate());
+          dateFormatter.format(board.getCreatedDate()));
     }
   }
 

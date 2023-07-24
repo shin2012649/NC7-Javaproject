@@ -20,35 +20,43 @@ public class MysqlBoardDao implements BoardDao {
 
   @Override
   public void insert(Board board) {
-    try (Statement stmt = con.createStatement();) {
+    try (Statement stmt = con.createStatement()) {
 
       stmt.executeUpdate(String.format(
-          "insert into JavaProject_board(title, content, writer, password, category) values('%s', '%s', '%s', '%s', '%d')",
-          board.getTitle(), board.getContent(), board.getWriter(), board.getPassword(), category));
+          "insert into JavaProject_board(title,content,writer,password,category)"
+              + " values('%s','%s','%s','%s',%d)",
+              board.getTitle(),
+              board.getContent(),
+              board.getWriter(),
+              board.getPassword(),
+              this.category));
 
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
+
   }
 
   @Override
   public List<Board> list() {
     try (Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(String.format(
-            "select board_no, title,  writer, view_count, created_date from JavaProject_board where category=%d order by board_no asc",
-            category))) {
+        ResultSet rs = stmt.executeQuery(
+            "select board_no, title, writer, view_count, created_date"
+                + " from JavaProject_board"
+                + " where category=" + this.category
+                + " order by board_no desc")) {
 
       List<Board> list = new ArrayList<>();
 
       while (rs.next()) {
-        Board board = new Board();
-        board.setNo(rs.getInt("board_no"));
-        board.setTitle(rs.getString("title"));
-        board.setWriter(rs.getString("writer"));
-        board.setViewCount(rs.getInt("view_count"));
-        board.setCreatedDate(rs.getDate("created_date"));
+        Board b = new Board();
+        b.setNo(rs.getInt("board_no"));
+        b.setTitle(rs.getString("title"));
+        b.setWriter(rs.getString("writer"));
+        b.setViewCount(rs.getInt("view_count"));
+        b.setCreatedDate(rs.getTimestamp("created_date"));
 
-        list.add(board);
+        list.add(b);
       }
 
       return list;
@@ -61,21 +69,26 @@ public class MysqlBoardDao implements BoardDao {
   @Override
   public Board findBy(int no) {
     try (Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(String.format(
-            "select board_no, title, content, writer, password, view_count, created_date from JavaProject_board where board_no=%d and category=%d",
-            no, category))) {
+        ResultSet rs = stmt.executeQuery(
+            "select board_no, title, content, writer, view_count, created_date"
+                + " from JavaProject_board"
+                + " where category=" + this.category + " and board_no=" + no
+                + " order by board_no desc")) {
 
       if (rs.next()) {
-        Board board = new Board();
-        board.setNo(rs.getInt("board_no"));
-        board.setTitle(rs.getString("title"));
-        board.setContent(rs.getString("content"));
-        board.setWriter(rs.getString("writer"));
-        board.setPassword(rs.getString("password"));
-        board.setViewCount(rs.getInt("view_count"));
-        board.setCreatedDate(rs.getDate("created_date"));
+        Board b = new Board();
+        b.setNo(rs.getInt("board_no"));
+        b.setTitle(rs.getString("title"));
+        b.setContent(rs.getString("content"));
+        b.setWriter(rs.getString("writer"));
+        b.setViewCount(rs.getInt("view_count"));
+        b.setCreatedDate(rs.getTimestamp("created_date"));
 
-        return board;
+        stmt.executeUpdate("update JavaProject_board set"
+            + " view_count=view_count + 1"
+            + " where board_no=" + no);
+
+        return b;
       }
 
       return null;
@@ -87,11 +100,18 @@ public class MysqlBoardDao implements BoardDao {
 
   @Override
   public int update(Board board) {
-    try (Statement stmt = con.createStatement();) {
+    try (Statement stmt = con.createStatement()) {
 
       return stmt.executeUpdate(String.format(
-          "update JavaProject_board set title='%s', content='%s' where board_no=%d and category=%d",
-          board.getTitle(), board.getContent(), board.getNo(), category));
+          "update JavaProject_board set"
+              + " title='%s',"
+              + " content='%s'"
+              + " where category=%d and board_no=%d and password='%s'",
+              board.getTitle(),
+              board.getContent(),
+              this.category,
+              board.getNo(),
+              board.getPassword()));
 
     } catch (Exception e) {
       throw new RuntimeException(e);
@@ -99,11 +119,14 @@ public class MysqlBoardDao implements BoardDao {
   }
 
   @Override
-  public int delete(int no) {
-    try (Statement stmt = con.createStatement();) {
+  public int delete(Board board) {
+    try (Statement stmt = con.createStatement()) {
 
-      return stmt.executeUpdate(
-          String.format("delete from JavaProject_board where board_no=%d and category=%d", no, category));
+      return stmt.executeUpdate(String.format(
+          "delete from JavaProject_board where category=%d and board_no=%d and password='%s'",
+          this.category,
+          board.getNo(),
+          board.getPassword()));
 
     } catch (Exception e) {
       throw new RuntimeException(e);
