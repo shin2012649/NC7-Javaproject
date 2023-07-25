@@ -39,7 +39,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'nc7.javaproject.ServerApp'
+    mainClass = 'nc7.javaproject.ClientApp'
 }
 
 tasks.named('test') {
@@ -63,7 +63,7 @@ tasks.withType(JavaCompile) {
 // eclipse 프로젝트 이름을 설정하기
 eclipse {
     project {
-        name = "JavaProject-server"
+        name = "JavaProject-client"
     }
     jdt {
       sourceCompatibility = 17
