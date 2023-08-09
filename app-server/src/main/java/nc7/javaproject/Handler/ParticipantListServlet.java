@@ -24,16 +24,16 @@ public class ParticipantListServlet extends HttpServlet {
     out.println("<html>");
     out.println("<head>");
     out.println("<meta charset='UTF-8'>");
-    out.println("<title>참여자</title>"); 
+    out.println("<title>영화A 시사회</title>"); 
     out.println("</head>");
     out.println("<body>"); 
-    out.println("<h1>참여자 목록</h1>");
+    out.println("<h1>영화A 시사회 명단</h1>");
     out.println("<div style='margin:5px;'>");
     out.println("<a href='/participant/form.html'>새 참여자</a>");
     out.println("</div>");
     out.println("<table border='1'>");
     out.println("<thead>");
-    out.println("  <tr><th>번호</th> <th>이름</th> <th>나이</th> <th>영화 재관람</th> <th>성별</th> <th>평점</th> <th>추가 정보</th></tr>");
+    out.println("  <tr><th>번호</th> <th>이름</th> <th>나이</th> <th>재관람 의사</th> <th>성별</th> <th>평점</th> <th>추가 정보</th></tr>");
     out.println("</thead>");
     out.println("<tbody>");
 

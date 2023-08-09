@@ -7,6 +7,12 @@ participant_no,name, age, movieAttendance, gender, movieRating, additionalInfo, 
 insert into JavaProject_participant(
 participant_no,name, age, movieAttendance, gender, movieRating, additionalInfo, password)
 	values(3, 'ccc', '50', 'Y', 'M', '3', 'not bad', sha1('1111'));
+insert into JavaProject_participant(
+participant_no,name, age, movieAttendance, gender, movieRating, additionalInfo, password)
+	values(4, 'ddd', '30', 'W', 'M', '5', 'ohora', sha1('1111'));
+insert into JavaProject_participant(
+participant_no,name, age, movieAttendance, gender, movieRating, additionalInfo, password)
+	values(5, 'eee', '10', 'Y', 'M', '5', 'aww', sha1('1111'));
 
 
 

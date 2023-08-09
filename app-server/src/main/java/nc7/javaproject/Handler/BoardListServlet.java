@@ -29,7 +29,7 @@ public class BoardListServlet extends HttpServlet {
     out.println("<html>");
     out.println("<head>");
     out.println("<meta charset='UTF-8'>");
-    out.println("<title>게시글</title>");
+    out.println("<title>게시판&평론</title>");
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>게시글 목록</h1>");
