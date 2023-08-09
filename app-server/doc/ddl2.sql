@@ -43,6 +43,18 @@ ALTER TABLE JavaProject_participant
     MODIFY movieRating INT NULL,
     MODIFY additionalInfo VARCHAR(100) NULL,
     MODIFY password VARCHAR(100) NULL;
+    
+CREATE TABLE JavaProject_event (
+  event_id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  entry_period VARCHAR(100) NOT NULL,
+  announcement_date DATETIME NOT NULL,
+  winners_count INT NOT NULL,
+  screening_date DATETIME NOT NULL,
+  screening_location VARCHAR(255) NOT NULL,
+  notice TEXT NOT NULL,
+  PRIMARY KEY (event_id)
+);
 
 -- JavaProject_board 테이블 변경: 모든 컬럼에 대해 NULL 허용
 --ALTER TABLE JavaProject_board

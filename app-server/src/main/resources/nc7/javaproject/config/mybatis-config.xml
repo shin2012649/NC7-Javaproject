@@ -23,5 +23,6 @@
   <mappers>
     <mapper resource="nc7/javaproject/dao/mysql/BoardDao.xml"/>
     <mapper resource="nc7/javaproject/dao/mysql/ParticipantDao.xml"/>
+    <mapper resource="nc7/javaproject/dao/mysql/EventDao.xml"/>
   </mappers>
 </configuration>

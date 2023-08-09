@@ -32,4 +32,20 @@ insert into JavaProject_board(board_no, title, content, writer, password, catego
 values(16, '제목6', '내용', 3, sha1('1111'), 2);
 insert into JavaProject_board(board_no, title, content, writer, password, category)
 values(17, '제목7', '내용', 3, sha1('1111'), 2);
+
+
+
+INSERT INTO JavaProject_event (
+  name, entry_period, announcement_date, winners_count, screening_date, screening_location, notice
+) VALUES (
+  'Avengers: Infinity War Screening', '2023-08-15 ~ 2023-08-31', '2023-08-01 10:00:00',
+  10, '2023-09-05 18:00:00', '용산 아이맥스', '• 당첨인원: 10명 (1인 2석, 총 20석)\n• 영화당 1인 1회 응모 가능합니다.'
+);
+
+INSERT INTO JavaProject_event (
+  name, entry_period, announcement_date, winners_count, screening_date, screening_location, notice
+) VALUES (
+  'HorrorFest: A Night of Chills', '2023-09-10 ~ 2023-09-20', '2023-09-01 14:00:00',
+  20, '2023-09-25 20:00:00', '군자 메가박스', '• 당첨인원: 20명 (1인 2석, 총 40석)\n• 영화당 1인 1회 응모 가능합니다.'
+);
   

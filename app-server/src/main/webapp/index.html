@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>개인프로젝트</title>
+  <title>시사회 서베이</title>
   <style>
     body {
       font-family: "Comic Sans MS", cursive, sans-serif;
@@ -88,7 +88,7 @@
       background-color: #8a2be2;
       color: #333;
     }
-    .additional-buttons {
+    .event-buttons {
       position: fixed;
       top: 10px;
       left: calc(100% - 250px); /* 로그인 버튼 크기와 여백을 고려한 위치 */
@@ -96,7 +96,7 @@
       flex-direction: column;
       align-items: flex-end;
     }
-    .additional-button {
+    .event-button {
       background-color: #9370db; /* 연한 퍼플(보라색 계열) 배경색 */
       color: #333;
       padding: 12px 20px; /* 버튼 크기 조정 */
@@ -107,7 +107,7 @@
       cursor: pointer;
       margin: 5px 0; /* 버튼 간격 조정 */
     }
-    .additional-button:hover {
+    .event-button:hover {
       background-color: #8a2be2;
       color: #333;
     }
@@ -116,8 +116,8 @@
 <body>
   <h1>시사회 서베이</h1>
   <a href="/auth/form.html" class="login-button">로그인</a>
-  <div class="additional-buttons">
-    <a href="/events" class="additional-button sub-button">시사회·이벤트</a>
+  <div class="event-buttons">
+    <a href="/event/list" class="event-button">시사회·이벤트</a>
   </div>
   <ul>
     <li><a href="/participant/list" class="sub-button">영화A 시사회</a></li>
