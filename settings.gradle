@@ -13,6 +13,6 @@ plugins {
 }
 
 rootProject.name = 'NC7-Javaproject'
-include('app-client')
-include('app-server')
-include('app-common')
+// include('app-client')
+include('mapp-server')
+include('mapp-common')
