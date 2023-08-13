@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nc7.javaproject.dao.CommentDao">
+
+  <!-- Comment 객체를 위한 resultMap 설정 -->
+  <resultMap type="comment" id="commentMap">
+    <id column="comments_no" property="no"/>
+    <result column="users_no" property="userNo"/>
+    <result column="films_no" property="filmNo"/>
+    <result column="contents" property="contents"/>
+    <result column="add_at" property="addedAt"/>
+    <result column="state" property="state"/>
+  </resultMap>
+
+  <!-- Comment 등록 -->
+  <insert id="insert" parameterType="comment">
+    insert into comments(users_no, films_no, contents, add_at, state)
+    values(#{userNo}, #{filmNo}, #{contents}, #{addedAt}, #{state})
+  </insert>
+
+  <!-- 모든 Comment 조회 -->
+  <select id="findAll" resultMap="commentMap">
+    select comments_no, users_no, films_no, contents, add_at, state
+    from comments
+  </select>
+
+  <!-- Comment 번호로 조회 -->
+  <select id="findByNo" parameterType="int" resultMap="commentMap">
+    select comments_no, users_no, films_no, contents, add_at, state
+    from comments
+    where comments_no = #{commentNo}
+  </select>
+
+  <!-- Comment 정보 업데이트 -->
+  <update id="update" parameterType="comment">
+    update comments
+    set contents = #{contents}, state = #{state}
+    where comments_no = #{no}
+  </update>
+
+  <!-- Comment 삭제 -->
+  <delete id="delete" parameterType="int">
+    delete from comments
+    where comments_no = #{commentNo}
+  </delete>
+
+</mapper>

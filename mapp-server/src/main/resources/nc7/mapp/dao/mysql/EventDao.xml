@@ -4,68 +4,64 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="nc7.javaproject.dao.EventDao">
 
+  <!-- Event 객체를 위한 resultMap 설정 -->
   <resultMap type="event" id="eventMap">
-    <id column="event_id" property="eventId"/>
-    <result column="name" property="name"/>
-    <result column="entry_period" property="entryPeriod"/>
-    <result column="announcement_date" property="announcementDate"/>
-    <result column="winners_count" property="winnersCount"/>
+    <id column="event_no" property="eventNo"/>
+    <result column="films_no" property="filmNo"/>
     <result column="screening_date" property="screeningDate"/>
     <result column="screening_location" property="screeningLocation"/>
+    <result column="entry_period_start" property="entryPeriodStart"/>
+    <result column="entry_period_end" property="entryPeriodEnd"/>
+    <result column="announcement_date" property="announcementDate"/>
+    <result column="winners_count" property="winnersCount"/>
     <result column="notice" property="notice"/>
   </resultMap>
 
+  <!-- 모든 이벤트 조회 -->
+  <select id="findAll" resultType="event" resultMap="eventMap">
+    select event_no, films_no, screening_date, screening_location,
+           entry_period_start, entry_period_end, announcement_date,
+           winners_count, notice
+    from event
+  </select>
+
+  <!-- 특정 이벤트 조회 -->
+  <select id="findByEventNo" parameterType="integer" resultType="event" resultMap="eventMap">
+    select event_no, films_no, screening_date, screening_location,
+           entry_period_start, entry_period_end, announcement_date,
+           winners_count, notice
+    from event
+    where event_no = #{eventNo}
+  </select>
+
+  <!-- Event 등록 -->
   <insert id="insert" parameterType="event">
-    insert into javaproject_event(name, entry_period, announcement_date, winners_count, screening_date, screening_location, notice)
-    values(#{name}, #{entryPeriod}, #{announcementDate}, #{winnersCount}, #{screeningDate}, #{screeningLocation}, #{notice})
+    insert into event(films_no, screening_date, screening_location,
+                      entry_period_start, entry_period_end, announcement_date,
+                      winners_count, notice)
+    values(#{filmNo}, #{screeningDate}, #{screeningLocation},
+           #{entryPeriodStart}, #{entryPeriodEnd}, #{announcementDate},
+           #{winnersCount}, #{notice})
   </insert>
 
-  <select id="findAll" resultMap="eventMap">
-    select
-      event_id,
-      name,
-      entry_period,
-      announcement_date,
-      winners_count,
-      screening_date,
-      screening_location,
-      notice
-    from
-      javaproject_event
-  </select>
-
-  <select id="findBy" parameterType="int" resultMap="eventMap">
-    select
-      event_id,
-      name,
-      entry_period,
-      announcement_date,
-      winners_count,
-      screening_date,
-      screening_location,
-      notice
-    from
-      javaproject_event
-    where
-      event_id = #{eventId}
-  </select>
-
+  <!-- Event 수정 -->
   <update id="update" parameterType="event">
-    update javaproject_event set
-      name = #{name},
-      entry_period = #{entryPeriod},
-      announcement_date = #{announcementDate},
-      winners_count = #{winnersCount},
-      screening_date = #{screeningDate},
-      screening_location = #{screeningLocation},
-      notice = #{notice}
-    where
-      event_id = #{eventId}
+    update event
+    set films_no = #{filmNo},
+        screening_date = #{screeningDate},
+        screening_location = #{screeningLocation},
+        entry_period_start = #{entryPeriodStart},
+        entry_period_end = #{entryPeriodEnd},
+        announcement_date = #{announcementDate},
+        winners_count = #{winnersCount},
+        notice = #{notice}
+    where event_no = #{eventNo}
   </update>
 
-  <delete id="delete" parameterType="int">
-    delete from javaproject_event
-    where
-      event_id = #{eventId}
+  <!-- Event 삭제 -->
+  <delete id="delete" parameterType="integer">
+    delete from event
+    where event_no = #{eventNo}
   </delete>
+
 </mapper>

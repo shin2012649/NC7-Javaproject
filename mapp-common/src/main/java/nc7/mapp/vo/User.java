@@ -14,6 +14,7 @@ public class User implements Serializable {
     private String profileImageUrl;
     private Date dateOfBirth;
     private Date createdAt;
+    private boolean isManager;
 
     public User() {
     }
@@ -110,4 +111,14 @@ public class User implements Serializable {
                 ", createdAt=" + createdAt +
                 '}';
     }
+
+    public void setIsManager(boolean isManager) {
+      this.isManager = isManager;
+  }
+
+    public boolean isManager() {
+      return isManager;
+  }
+
+    
 }

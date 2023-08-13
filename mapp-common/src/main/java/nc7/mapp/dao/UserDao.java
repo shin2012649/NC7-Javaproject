@@ -6,8 +6,8 @@ import nc7.mapp.vo.User;
 public interface UserDao {
     void insert(User user);
     List<User> findAll();
-    User findByUsersNo(int usersNo);
-    User findByEmail(String email);
+    User findBy(int usersNo);
+    User findByEmailAndPassword(User user);
     int update(User user);
     int delete(int usersNo);
 }

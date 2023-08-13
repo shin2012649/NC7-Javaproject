@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nc7.javaproject.dao.ActorDao">
+
+  <!-- Actor 객체를 위한 resultMap 설정 -->
+  <resultMap type="actor" id="actorMap">
+    <id column="actors_no" property="no"/>
+    <result column="name" property="name"/>
+    <result column="image_url" property="imageUrl"/>
+  </resultMap>
+
+  <!-- Actor 등록 -->
+  <insert id="insert" parameterType="actor">
+    insert into actors(name, image_url)
+    values(#{name}, #{imageUrl})
+  </insert>
+
+  <!-- 모든 Actor 조회 -->
+  <select id="findAll" resultMap="actorMap">
+    select actors_no, name, image_url
+    from actors
+  </select>
+
+  <!-- Actor 번호로 조회 -->
+  <select id="findByNo" parameterType="int" resultMap="actorMap">
+    select actors_no, name, image_url
+    from actors
+    where actors_no = #{actorNo}
+  </select>
+
+  <!-- Actor 정보 업데이트 -->
+  <update id="update" parameterType="actor">
+    update actors
+    set name = #{name}, image_url = #{imageUrl}
+    where actors_no = #{no}
+  </update>
+
+  <!-- Actor 삭제 -->
+  <delete id="delete" parameterType="int">
+    delete from actors
+    where actors_no = #{actorNo}
+  </delete>
+
+</mapper>

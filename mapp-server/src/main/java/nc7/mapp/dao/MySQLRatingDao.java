@@ -23,18 +23,22 @@ public class MySQLRatingDao implements RatingDao {
 
     @Override
     public List<Rating> findAll() {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession(false)) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
             return sqlSession.selectList("nc7.mapp.dao.RatingDao.findAll");
         }
     }
 
     @Override
-    public Rating findByUserAndFilm(int userNo, int filmNo) {
-        try (SqlSession sqlSession = sqlSessionFactory.openSession(false)) {
-            Rating searchCriteria = new Rating();
-            searchCriteria.setUsersNo(userNo);
-            searchCriteria.setFilmsNo(filmNo);
-            return sqlSession.selectOne("nc7.mapp.dao.RatingDao.findByUserAndFilm", searchCriteria);
+    public List<Rating> findByUserId(int userId) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            return sqlSession.selectList("nc7.mapp.dao.RatingDao.findByUserId", userId);
+        }
+    }
+
+    @Override
+    public List<Rating> findByFilmId(int filmId) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            return sqlSession.selectList("nc7.mapp.dao.RatingDao.findByFilmId", filmId);
         }
     }
 

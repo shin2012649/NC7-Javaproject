@@ -21,16 +21,16 @@ public class MySQLUserDao implements UserDao {
     }
 
     @Override
-    public User findByUsersNo(int usersNo) {
+    public User findBy(int usersNo) {
         try (SqlSession sqlSession = sqlSessionFactory.openSession(false)) {
             return sqlSession.selectOne("nc7.mapp.dao.UserDao.findByNo", usersNo);
         }
     }
 
     @Override
-    public User findByEmail(String email) {
+    public User findByEmailAndPassword(User user) {
         try (SqlSession sqlSession = sqlSessionFactory.openSession(false)) {
-            return sqlSession.selectOne("nc7.mapp.dao.UserDao.findByEmail", email);
+            return sqlSession.selectOne("nc7.mapp.dao.UserDao.findByEmailAndPassword", user);
         }
     }
 
