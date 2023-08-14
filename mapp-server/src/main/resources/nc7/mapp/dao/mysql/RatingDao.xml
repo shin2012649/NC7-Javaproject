@@ -6,17 +6,17 @@
 
   <!-- 모든 등급 정보 조회 -->
   <select id="findAll" resultMap="ratingMap">
-    select * from rating
+    SELECT * FROM rating
   </select>
   
   <!-- 등급 정보 조회 by 사용자 번호 -->
   <select id="findByUserId" parameterType="int" resultMap="ratingMap">
-    select * from rating where users_no = #{userId}
+    SELECT * FROM rating WHERE users_no = #{userId}
   </select>
   
   <!-- 등급 정보 조회 by 영화 번호 -->
   <select id="findByFilmId" parameterType="int" resultMap="ratingMap">
-    select * from rating where films_no = #{filmId}
+    SELECT * FROM rating WHERE films_no = #{filmId}
   </select>
   
   <!-- resultMap 정의 -->

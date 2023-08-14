@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="nc7.javaproject.dao.EventDao">
+<mapper namespace="nc7.mapp.dao.EventDao">
 
   <!-- Event 객체를 위한 resultMap 설정 -->
-  <resultMap type="event" id="eventMap">
+  <resultMap type="nc7.mapp.vo.Event" id="eventMap">
     <id column="event_no" property="eventNo"/>
     <result column="films_no" property="filmNo"/>
     <result column="screening_date" property="screeningDate"/>
@@ -18,36 +18,36 @@
   </resultMap>
 
   <!-- 모든 이벤트 조회 -->
-  <select id="findAll" resultType="event" resultMap="eventMap">
-    select event_no, films_no, screening_date, screening_location,
+  <select id="findAll" resultMap="eventMap">
+    SELECT event_no, films_no, screening_date, screening_location,
            entry_period_start, entry_period_end, announcement_date,
            winners_count, notice
-    from event
+    FROM event
   </select>
 
   <!-- 특정 이벤트 조회 -->
-  <select id="findByEventNo" parameterType="integer" resultType="event" resultMap="eventMap">
-    select event_no, films_no, screening_date, screening_location,
+  <select id="findByEventNo" parameterType="integer" resultMap="eventMap">
+    SELECT event_no, films_no, screening_date, screening_location,
            entry_period_start, entry_period_end, announcement_date,
            winners_count, notice
-    from event
-    where event_no = #{eventNo}
+    FROM event
+    WHERE event_no = #{eventNo}
   </select>
 
   <!-- Event 등록 -->
-  <insert id="insert" parameterType="event">
-    insert into event(films_no, screening_date, screening_location,
+  <insert id="insert" parameterType="nc7.mapp.vo.Event">
+    INSERT INTO event(films_no, screening_date, screening_location,
                       entry_period_start, entry_period_end, announcement_date,
                       winners_count, notice)
-    values(#{filmNo}, #{screeningDate}, #{screeningLocation},
+    VALUES (#{filmNo}, #{screeningDate}, #{screeningLocation},
            #{entryPeriodStart}, #{entryPeriodEnd}, #{announcementDate},
            #{winnersCount}, #{notice})
   </insert>
 
   <!-- Event 수정 -->
-  <update id="update" parameterType="event">
-    update event
-    set films_no = #{filmNo},
+  <update id="update" parameterType="nc7.mapp.vo.Event">
+    UPDATE event
+    SET films_no = #{filmNo},
         screening_date = #{screeningDate},
         screening_location = #{screeningLocation},
         entry_period_start = #{entryPeriodStart},
@@ -55,13 +55,13 @@
         announcement_date = #{announcementDate},
         winners_count = #{winnersCount},
         notice = #{notice}
-    where event_no = #{eventNo}
+    WHERE event_no = #{eventNo}
   </update>
 
   <!-- Event 삭제 -->
   <delete id="delete" parameterType="integer">
-    delete from event
-    where event_no = #{eventNo}
+    DELETE FROM event
+    WHERE event_no = #{eventNo}
   </delete>
 
 </mapper>

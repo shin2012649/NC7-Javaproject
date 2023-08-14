@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="nc7.javaproject.dao.FilmActorDao">
+<mapper namespace="nc7.mapp.dao.FilmActorDao">
 
   <!-- FilmActor 객체를 위한 resultMap 설정 -->
-  <resultMap type="filmActor" id="filmActorMap">
+  <resultMap type="nc7.mapp.vo.FilmActor" id="filmActorMap">
     <id column="films_actors_no" property="filmActorNo"/>
     <result column="films_no" property="filmNo"/>
     <result column="roles_no" property="roleNo"/>
@@ -14,23 +14,23 @@
   </resultMap>
 
   <!-- 특정 영화의 배우 정보 조회 -->
-  <select id="findByFilmNo" parameterType="integer" resultType="filmActor" resultMap="filmActorMap">
-    select fa.films_actors_no, fa.films_no, fa.roles_no, fa.actors_no, a.name
-    from films_actors fa
-    inner join actors a on fa.actors_no = a.actors_no
-    where fa.films_no = #{filmNo}
+  <select id="findByFilmNo" parameterType="integer" resultMap="filmActorMap">
+    SELECT fa.films_actors_no, fa.films_no, fa.roles_no, fa.actors_no, a.name
+    FROM films_actors fa
+    INNER JOIN actors a ON fa.actors_no = a.actors_no
+    WHERE fa.films_no = #{filmNo}
   </select>
 
   <!-- FilmActor 등록 -->
-  <insert id="insert" parameterType="filmActor">
-    insert into films_actors(films_no, roles_no, actors_no)
-    values(#{filmNo}, #{roleNo}, #{actorNo})
+  <insert id="insert" parameterType="nc7.mapp.vo.FilmActor">
+    INSERT INTO films_actors(films_no, roles_no, actors_no)
+    VALUES (#{filmNo}, #{roleNo}, #{actorNo})
   </insert>
 
   <!-- FilmActor 삭제 -->
   <delete id="delete" parameterType="integer">
-    delete from films_actors
-    where films_actors_no = #{filmActorNo}
+    DELETE FROM films_actors
+    WHERE films_actors_no = #{filmActorNo}
   </delete>
 
 </mapper>

@@ -2,25 +2,22 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="nc7.javaproject.dao.CommentLikeDao">
+<mapper namespace="nc7.mapp.dao.CommentLikeDao">
 
-  <!-- CommentLike 객체를 위한 resultMap 설정 -->
-  <resultMap type="commentLike" id="commentLikeMap">
+  <resultMap type="nc7.mapp.vo.CommentLike" id="commentLikeMap">
     <id column="comments_no" property="commentNo"/>
     <id column="users_no" property="userNo"/>
   </resultMap>
 
-  <!-- CommentLike 등록 -->
-  <insert id="insert" parameterType="commentLike">
-    insert into comments_like(comments_no, users_no)
-    values(#{commentNo}, #{userNo})
+  <insert id="insert" parameterType="nc7.mapp.vo.CommentLike">
+    INSERT INTO comments_like(comments_no, users_no)
+    VALUES (#{commentNo}, #{userNo})
   </insert>
 
-  <!-- CommentLike 삭제 -->
-  <delete id="delete" parameterType="map">
-    delete from comments_like
-    where comments_no = #{commentNo}
-    and users_no = #{userNo}
+  <delete id="delete" parameterType="java.util.Map">
+    DELETE FROM comments_like
+    WHERE comments_no = #{commentNo}
+    AND users_no = #{userNo}
   </delete>
 
 </mapper>

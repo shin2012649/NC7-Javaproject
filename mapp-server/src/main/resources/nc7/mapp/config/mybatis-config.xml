@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="nc7/javaproject/config/jdbc.properties"></properties>
+  <properties resource="nc7/mapp/config/jdbc.properties"></properties>
 
   <typeAliases>
-    <package name="nc7.javaproject.vo"/>
+    <package name="nc7.mapp.vo"/>
   </typeAliases>
   
   <environments default="development">
@@ -20,9 +20,30 @@
       </dataSource>
     </environment>
   </environments>
+  
   <mappers>
-    <mapper resource="nc7/javaproject/dao/mysql/BoardDao.xml"/>
-    <mapper resource="nc7/javaproject/dao/mysql/ParticipantDao.xml"/>
-    <mapper resource="nc7/javaproject/dao/mysql/EventDao.xml"/>
+    <mapper resource="nc7/mapp/dao/ActorDao.xml"/>
+    <mapper resource="nc7/mapp/dao/CommentDao.xml"/>
+    <mapper resource="nc7/mapp/dao/CommentLikeDao.xml"/>
+    <mapper resource="nc7/mapp/dao/CountryDao.xml"/>
+    <mapper resource="nc7/mapp/dao/EventApplicationDao.xml"/>
+    <mapper resource="nc7/mapp/dao/EventDao.xml"/>
+    <mapper resource="nc7/mapp/dao/FilmActorDao.xml"/>
+    <mapper resource="nc7/mapp/dao/FilmCountryDao.xml"/>
+    <mapper resource="nc7/mapp/dao/FilmDao.xml"/>
+    <mapper resource="nc7/mapp/dao/FilmGenreDao.xml"/>
+    <mapper resource="nc7/mapp/dao/FilmSrcDao.xml"/>
+    <mapper resource="nc7/mapp/dao/FilmStaffDao.xml"/>
+    <mapper resource="nc7/mapp/dao/GenreDao.xml"/>
+    <mapper resource="nc7/mapp/dao/GradeDao.xml"/>
+    <mapper resource="nc7/mapp/dao/ManagerDao.xml"/>
+    <mapper resource="nc7/mapp/dao/ParticipantDao.xml"/>
+    <mapper resource="nc7/mapp/dao/RatingDao.xml"/>
+    <mapper resource="nc7/mapp/dao/RoleDao.xml"/>
+    <mapper resource="nc7/mapp/dao/SrcDao.xml"/>
+    <mapper resource="nc7/mapp/dao/StaffDao.xml"/>
+    <mapper resource="nc7/mapp/dao/UserDao.xml"/>
+    <mapper resource="nc7/mapp/dao/WatchListDao.xml"/>
+    <!-- Add other mapper resources here -->
   </mappers>
 </configuration>

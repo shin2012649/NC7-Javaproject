@@ -1,7 +1,7 @@
 package nc7.mapp.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Event implements Serializable {
@@ -9,20 +9,20 @@ public class Event implements Serializable {
 
     private int eventNo;
     private int filmsNo;
-    private Date screeningDate;
     private String screeningLocation;
-    private Date entryPeriodStart;
-    private Date entryPeriodEnd;
-    private Date announcementDate;
+    private LocalDateTime entryPeriodStart;
+    private LocalDateTime entryPeriodEnd;
+    private LocalDateTime announcementDate;
     private int winnersCount;
     private String notice;
+    private LocalDateTime screeningDate;
 
     public Event() {
     }
 
-    public Event(int eventNo, int filmsNo, Date screeningDate, String screeningLocation,
-                 Date entryPeriodStart, Date entryPeriodEnd, Date announcementDate,
-                 int winnersCount, String notice) {
+    public Event(int eventNo, int filmsNo, LocalDateTime screeningDate, String screeningLocation,
+        LocalDateTime entryPeriodStart, LocalDateTime entryPeriodEnd, LocalDateTime announcementDate,
+        int winnersCount, String notice) {
         this.eventNo = eventNo;
         this.filmsNo = filmsNo;
         this.screeningDate = screeningDate;
@@ -50,13 +50,6 @@ public class Event implements Serializable {
         this.filmsNo = filmsNo;
     }
 
-    public Date getScreeningDate() {
-        return screeningDate;
-    }
-
-    public void setScreeningDate(Date screeningDate) {
-        this.screeningDate = screeningDate;
-    }
 
     public String getScreeningLocation() {
         return screeningLocation;
@@ -66,29 +59,7 @@ public class Event implements Serializable {
         this.screeningLocation = screeningLocation;
     }
 
-    public Date getEntryPeriodStart() {
-        return entryPeriodStart;
-    }
 
-    public void setEntryPeriodStart(Date entryPeriodStart) {
-        this.entryPeriodStart = entryPeriodStart;
-    }
-
-    public Date getEntryPeriodEnd() {
-        return entryPeriodEnd;
-    }
-
-    public void setEntryPeriodEnd(Date entryPeriodEnd) {
-        this.entryPeriodEnd = entryPeriodEnd;
-    }
-
-    public Date getAnnouncementDate() {
-        return announcementDate;
-    }
-
-    public void setAnnouncementDate(Date announcementDate) {
-        this.announcementDate = announcementDate;
-    }
 
     public int getWinnersCount() {
         return winnersCount;
@@ -104,6 +75,36 @@ public class Event implements Serializable {
 
     public void setNotice(String notice) {
         this.notice = notice;
+    }
+    
+    
+
+    public LocalDateTime getEntryPeriodStart() {
+      return entryPeriodStart;
+    }
+
+    public void setEntryPeriodStart(LocalDateTime entryPeriodStart) {
+      this.entryPeriodStart = entryPeriodStart;
+    }
+
+    public LocalDateTime getEntryPeriodEnd() {
+      return entryPeriodEnd;
+    }
+
+    public void setEntryPeriodEnd(LocalDateTime entryPeriodEnd) {
+      this.entryPeriodEnd = entryPeriodEnd;
+    }
+
+    public LocalDateTime getAnnouncementDate() {
+      return announcementDate;
+    }
+
+    public void setAnnouncementDate(LocalDateTime announcementDate) {
+      this.announcementDate = announcementDate;
+    }
+
+    public void setScreeningDate(LocalDateTime screeningDate) {
+      this.screeningDate = screeningDate;
     }
 
     @Override
@@ -141,5 +142,10 @@ public class Event implements Serializable {
                 ", winnersCount=" + winnersCount +
                 ", notice='" + notice + '\'' +
                 '}';
+    }
+
+    public LocalDateTime getScreeningDate() {
+      // TODO Auto-generated method stub
+      return screeningDate;
     }
 }

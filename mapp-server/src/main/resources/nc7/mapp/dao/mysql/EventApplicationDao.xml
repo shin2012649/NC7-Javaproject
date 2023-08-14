@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="nc7.javaproject.dao.EventApplicationDao">
+<mapper namespace="nc7.mapp.dao.EventApplicationDao">
 
   <!-- EventApplication 객체를 위한 resultMap 설정 -->
-  <resultMap type="eventApplication" id="eventApplicationMap">
+  <resultMap type="nc7.mapp.vo.EventApplication" id="eventApplicationMap">
     <id column="users_no" property="userNo"/>
     <id column="event_no" property="eventNo"/>
     <result column="created_date" property="createdDate"/>
@@ -13,45 +13,45 @@
   </resultMap>
 
   <!-- 모든 이벤트 신청 내역 조회 -->
-  <select id="findAll" resultType="eventApplication" resultMap="eventApplicationMap">
-    select users_no, event_no, created_date, state
-    from event_application
+  <select id="findAll" resultMap="eventApplicationMap">
+    SELECT users_no, event_no, created_date, state
+    FROM event_application
   </select>
 
   <!-- 특정 사용자의 이벤트 신청 내역 조회 -->
-  <select id="findByUserNo" parameterType="integer" resultType="eventApplication" resultMap="eventApplicationMap">
-    select users_no, event_no, created_date, state
-    from event_application
-    where users_no = #{userNo}
+  <select id="findByUserNo" parameterType="integer" resultMap="eventApplicationMap">
+    SELECT users_no, event_no, created_date, state
+    FROM event_application
+    WHERE users_no = #{userNo}
   </select>
 
   <!-- 특정 이벤트의 신청 내역 조회 -->
-  <select id="findByEventNo" parameterType="integer" resultType="eventApplication" resultMap="eventApplicationMap">
-    select users_no, event_no, created_date, state
-    from event_application
-    where event_no = #{eventNo}
+  <select id="findByEventNo" parameterType="integer" resultMap="eventApplicationMap">
+    SELECT users_no, event_no, created_date, state
+    FROM event_application
+    WHERE event_no = #{eventNo}
   </select>
 
   <!-- EventApplication 등록 -->
-  <insert id="insert" parameterType="eventApplication">
-    insert into event_application(users_no, event_no, created_date, state)
-    values(#{userNo}, #{eventNo}, #{createdDate}, #{state})
+  <insert id="insert" parameterType="nc7.mapp.vo.EventApplication">
+    INSERT INTO event_application(users_no, event_no, created_date, state)
+    VALUES (#{userNo}, #{eventNo}, #{createdDate}, #{state})
   </insert>
 
   <!-- EventApplication 수정 -->
-  <update id="update" parameterType="eventApplication">
-    update event_application
-    set created_date = #{createdDate},
+  <update id="update" parameterType="nc7.mapp.vo.EventApplication">
+    UPDATE event_application
+    SET created_date = #{createdDate},
         state = #{state}
-    where users_no = #{userNo}
-      and event_no = #{eventNo}
+    WHERE users_no = #{userNo}
+      AND event_no = #{eventNo}
   </update>
 
   <!-- EventApplication 삭제 -->
   <delete id="delete" parameterType="map">
-    delete from event_application
-    where users_no = #{userNo}
-      and event_no = #{eventNo}
+    DELETE FROM event_application
+    WHERE users_no = #{userNo}
+      AND event_no = #{eventNo}
   </delete>
 
 </mapper>

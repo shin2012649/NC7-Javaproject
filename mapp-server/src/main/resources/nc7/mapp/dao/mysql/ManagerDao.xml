@@ -2,16 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="nc7.javaproject.dao.ManagerDao">
+<mapper namespace="nc7.mapp.dao.ManagerDao">
 
   <!-- 모든 매니저 정보 조회 -->
   <select id="findAll" resultMap="managerMap">
-    select * from manager
+    SELECT * FROM manager
   </select>
   
   <!-- 매니저 정보 조회 by 사용자 번호 -->
-  <select id="findByUserId" parameterType="int" resultMap="managerMap">
-    select * from manager where users_no = #{userId}
+  <select id="findByUserNo" parameterType="int" resultMap="managerMap">
+    SELECT * FROM manager WHERE users_no = #{userNo}
   </select>
   
   <!-- resultMap 정의 -->

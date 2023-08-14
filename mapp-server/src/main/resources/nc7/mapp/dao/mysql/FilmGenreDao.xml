@@ -2,30 +2,30 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="nc7.javaproject.dao.FilmGenreDao">
+<mapper namespace="nc7.mapp.dao.FilmGenreDao">
 
   <!-- 영화 장르 정보 조회 -->
-  <select id="findByFilmId" parameterType="int" resultMap="filmGenreMap">
-    select
+  <select id="findByFilmNo" parameterType="int" resultMap="filmGenreMap">
+    SELECT
       fg.films_genres_no,
       fg.genres_no,
-      g.name as genre_name
-    from
-      films_genres fg inner join genres g on fg.genres_no = g.genres_no
-    where
+      g.name AS genre_name
+    FROM
+      films_genres fg INNER JOIN genres g ON fg.genres_no = g.genres_no
+    WHERE
       fg.films_no = #{filmNo}
   </select>
   
   <!-- 영화 장르 정보 삽입 -->
   <insert id="insert" parameterType="filmGenre">
-    insert into films_genres(films_no, genres_no)
-    values(#{film.filmsNo}, #{genre.genresNo})
+    INSERT INTO films_genres(films_no, genres_no)
+    VALUES(#{film.filmsNo}, #{genre.genresNo})
   </insert>
   
   <!-- 영화 장르 정보 삭제 -->
-  <delete id="delete" parameterType="int">
-    delete from films_genres
-    where films_no = #{filmNo}
+  <delete id="deleteByFilmNo" parameterType="int">
+    DELETE FROM films_genres
+    WHERE films_no = #{filmNo}
   </delete>
   
   <!-- resultMap 정의 -->
