@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import nc7.mapp.handler.InitServlet;
 import nc7.mapp.vo.Event;
 
-@WebServlet("/event/detail")
+@WebServlet("/eventapplication/detail")
 public class EventApplicationDetailServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

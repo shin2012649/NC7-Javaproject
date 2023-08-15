@@ -22,28 +22,27 @@
   </environments>
   
   <mappers>
-    <mapper resource="nc7/mapp/dao/ActorDao.xml"/>
-    <mapper resource="nc7/mapp/dao/CommentDao.xml"/>
-    <mapper resource="nc7/mapp/dao/CommentLikeDao.xml"/>
-    <mapper resource="nc7/mapp/dao/CountryDao.xml"/>
-    <mapper resource="nc7/mapp/dao/EventApplicationDao.xml"/>
-    <mapper resource="nc7/mapp/dao/EventDao.xml"/>
-    <mapper resource="nc7/mapp/dao/FilmActorDao.xml"/>
-    <mapper resource="nc7/mapp/dao/FilmCountryDao.xml"/>
-    <mapper resource="nc7/mapp/dao/FilmDao.xml"/>
-    <mapper resource="nc7/mapp/dao/FilmGenreDao.xml"/>
-    <mapper resource="nc7/mapp/dao/FilmSrcDao.xml"/>
-    <mapper resource="nc7/mapp/dao/FilmStaffDao.xml"/>
-    <mapper resource="nc7/mapp/dao/GenreDao.xml"/>
-    <mapper resource="nc7/mapp/dao/GradeDao.xml"/>
-    <mapper resource="nc7/mapp/dao/ManagerDao.xml"/>
-    <mapper resource="nc7/mapp/dao/ParticipantDao.xml"/>
-    <mapper resource="nc7/mapp/dao/RatingDao.xml"/>
-    <mapper resource="nc7/mapp/dao/RoleDao.xml"/>
-    <mapper resource="nc7/mapp/dao/SrcDao.xml"/>
-    <mapper resource="nc7/mapp/dao/StaffDao.xml"/>
-    <mapper resource="nc7/mapp/dao/UserDao.xml"/>
-    <mapper resource="nc7/mapp/dao/WatchListDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/ActorDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/CommentDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/CommentLikeDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/CountryDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/EventApplicationDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/EventDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/FilmActorDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/FilmCountryDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/FilmDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/FilmGenreDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/FilmSrcDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/FilmStaffDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/GenreDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/GradeDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/ManagerDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/RatingDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/RoleDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/SrcDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/StaffDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/UserDao.xml"/>
+    <mapper resource="nc7/mapp/dao/mysql/WatchListDao.xml"/>
     <!-- Add other mapper resources here -->
   </mappers>
 </configuration>
