@@ -8,4 +8,5 @@ public interface WatchListDao {
     List<WatchList> findByUsersNo(int usersNo);
     List<WatchList> findByFilmsNo(int filmsNo);
     int delete(int usersNo, int filmsNo);
+    int update(WatchList watchList);
 }

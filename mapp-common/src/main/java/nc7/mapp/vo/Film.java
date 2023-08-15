@@ -1,7 +1,7 @@
 package nc7.mapp.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Film implements Serializable {
@@ -13,12 +13,12 @@ public class Film implements Serializable {
     private int gradeNo;
     private String descriptions;
     private int runningTime;
-    private Date releasedDate;
+    private LocalDate releasedDate;
 
     public Film() {
     }
 
-    public Film(int filmsNo, String title, String filmsImageUrl, int gradeNo, String descriptions, int runningTime, Date releasedDate) {
+    public Film(int filmsNo, String title, String filmsImageUrl, int gradeNo, String descriptions, int runningTime, LocalDate releasedDate) {
         this.filmsNo = filmsNo;
         this.title = title;
         this.filmsImageUrl = filmsImageUrl;
@@ -76,12 +76,14 @@ public class Film implements Serializable {
         this.runningTime = runningTime;
     }
 
-    public Date getReleasedDate() {
-        return releasedDate;
+
+
+    public LocalDate getReleasedDate() {
+      return releasedDate;
     }
 
-    public void setReleasedDate(Date releasedDate) {
-        this.releasedDate = releasedDate;
+    public void setReleasedDate(LocalDate releasedDate) {
+      this.releasedDate = releasedDate;
     }
 
     @Override

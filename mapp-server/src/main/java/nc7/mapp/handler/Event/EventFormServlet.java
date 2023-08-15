@@ -42,10 +42,10 @@ public class EventFormServlet extends HttpServlet {
         out.println("<html>");
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
-        out.println("<title>이벤트 폼</title>");
+        out.println("<title>이벤트 홈</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>이벤트 폼</h1>");
+        out.println("<h1>이벤트 홈</h1>");
 
         if (event != null) {
             out.println("<form action='/event/update' method='post'>");

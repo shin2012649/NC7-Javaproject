@@ -1,6 +1,8 @@
 package nc7.mapp.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import nc7.mapp.vo.WatchList;
@@ -41,6 +43,17 @@ public class MySQLWatchListDao implements WatchListDao {
             watchList.setUsersNo(usersNo);
             watchList.setFilmsNo(filmsNo);
             return sqlSession.delete("nc7.mapp.dao.WatchListDao.delete", watchList);
+        }
+    }
+
+    @Override
+    public int update(WatchList watchList) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("usersNo", watchList.getUsersNo());
+            params.put("filmsNo", watchList.getFilmsNo());
+
+            return sqlSession.update("nc7.mapp.dao.WatchListDao.update", params);
         }
     }
 }
