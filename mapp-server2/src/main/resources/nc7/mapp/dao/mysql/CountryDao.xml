@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nc7.mapp.dao.CountryDao">
+
+  <!-- Country 객체를 위한 resultMap 설정 -->
+  <resultMap type="nc7.mapp.vo.Country" id="countryMap">
+    <id column="countries_no" property="countryNo"/>
+    <result column="name" property="name"/>
+  </resultMap>
+
+  <!-- 모든 국가 조회 -->
+  <select id="findAll" resultMap="countryMap">
+    SELECT countries_no, name
+    FROM countries
+  </select>
+
+  <!-- 국가 번호로 조회 -->
+  <select id="findByCountryNo" parameterType="string" resultMap="countryMap">
+    SELECT countries_no, name
+    FROM countries
+    WHERE countries_no = #{countryNo}
+  </select>
+
+  <!-- 국가 이름으로 조회 -->
+  <select id="findByName" parameterType="string" resultMap="countryMap">
+    SELECT countries_no, name
+    FROM countries
+    WHERE name = #{name}
+  </select>
+
+  <!-- Country 등록 -->
+  <insert id="insert" parameterType="nc7.mapp.vo.Country">
+    INSERT INTO countries(countries_no, name)
+    VALUES (#{countryNo}, #{name})
+  </insert>
+
+  <!-- Country 수정 -->
+  <update id="update" parameterType="nc7.mapp.vo.Country">
+    UPDATE countries
+    SET name = #{name}
+    WHERE countries_no = #{countryNo}
+  </update>
+
+  <!-- Country 삭제 -->
+  <delete id="delete" parameterType="string">
+    DELETE FROM countries
+    WHERE countries_no = #{countryNo}
+  </delete>
+
+</mapper>

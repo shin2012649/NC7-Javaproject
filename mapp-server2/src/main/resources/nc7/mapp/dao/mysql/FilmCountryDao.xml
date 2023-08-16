@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nc7.mapp.dao.FilmCountryDao">
+
+  <!-- 영화 국가 정보 삽입 -->
+  <insert id="insert" parameterType="nc7.mapp.vo.FilmCountry">
+    INSERT INTO films_countries(films_no, countries_no)
+    VALUES (#{filmNo}, #{countryNo})
+  </insert>
+
+  <!-- 특정 영화의 국가 정보 조회 -->
+  <select id="findByFilm" parameterType="int" resultType="nc7.mapp.vo.FilmCountry">
+    SELECT films_no, countries_no
+    FROM films_countries
+    WHERE films_no = #{filmNo}
+  </select>
+  
+  <!-- 특정 국가의 영화 정보 조회 -->
+  <select id="findByCountry" parameterType="String" resultType="nc7.mapp.vo.FilmCountry">
+    SELECT films_no, countries_no
+    FROM films_countries
+    WHERE countries_no = #{countryNo}
+  </select>
+  
+  <!-- 영화 국가 정보 삭제 -->
+  <delete id="delete" parameterType="nc7.mapp.vo.FilmCountry">
+    DELETE FROM films_countries
+    WHERE films_no = #{filmNo}
+      AND countries_no = #{countryNo}
+  </delete>
+</mapper>

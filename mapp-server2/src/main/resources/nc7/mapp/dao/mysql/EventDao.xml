@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nc7.mapp.dao.EventDao">
+
+  <!-- Event 객체를 위한 resultMap 설정 -->
+  <resultMap type="nc7.mapp.vo.Event" id="eventMap">
+    <id column="event_no" property="eventNo"/>
+    <result column="films_no" property="filmNo"/>
+    <result column="screening_date" property="screeningDate"/>
+    <result column="screening_location" property="screeningLocation"/>
+    <result column="entry_period_start" property="entryPeriodStart"/>
+    <result column="entry_period_end" property="entryPeriodEnd"/>
+    <result column="announcement_date" property="announcementDate"/>
+    <result column="winners_count" property="winnersCount"/>
+    <result column="notice" property="notice"/>
+  </resultMap>
+
+  <!-- 모든 이벤트 조회 -->
+  <select id="findAll" resultMap="eventMap">
+    SELECT event_no, films_no, screening_date, screening_location,
+           entry_period_start, entry_period_end, announcement_date,
+           winners_count, notice
+    FROM event
+  </select>
+
+  <!-- 특정 이벤트 조회 -->
+  <select id="findByEventNo" parameterType="integer" resultMap="eventMap">
+    SELECT event_no, films_no, screening_date, screening_location,
+           entry_period_start, entry_period_end, announcement_date,
+           winners_count, notice
+    FROM event
+    WHERE event_no = #{eventNo}
+  </select>
+
+  <!-- Event 등록 -->
+  <insert id="insert" parameterType="nc7.mapp.vo.Event">
+    INSERT INTO event(films_no, screening_date, screening_location,
+                      entry_period_start, entry_period_end, announcement_date,
+                      winners_count, notice)
+    VALUES (#{filmNo}, #{screeningDate}, #{screeningLocation},
+           #{entryPeriodStart}, #{entryPeriodEnd}, #{announcementDate},
+           #{winnersCount}, #{notice})
+  </insert>
+
+  <!-- Event 수정 -->
+  <update id="update" parameterType="nc7.mapp.vo.Event">
+    UPDATE event
+    SET films_no = #{filmNo},
+        screening_date = #{screeningDate},
+        screening_location = #{screeningLocation},
+        entry_period_start = #{entryPeriodStart},
+        entry_period_end = #{entryPeriodEnd},
+        announcement_date = #{announcementDate},
+        winners_count = #{winnersCount},
+        notice = #{notice}
+    WHERE event_no = #{eventNo}
+  </update>
+
+  <!-- Event 삭제 -->
+  <delete id="delete" parameterType="integer">
+    DELETE FROM event
+    WHERE event_no = #{eventNo}
+  </delete>
+
+</mapper>
