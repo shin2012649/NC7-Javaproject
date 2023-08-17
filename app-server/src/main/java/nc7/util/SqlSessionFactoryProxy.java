@@ -1,6 +1,6 @@
 package nc7.util;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
@@ -12,13 +12,13 @@ public class SqlSessionFactoryProxy implements SqlSessionFactory {
   SqlSessionFactory original;
 
   ThreadLocal<SqlSession> sqlSessionBox = new ThreadLocal<>();
- 
+
   public SqlSessionFactoryProxy(SqlSessionFactory original) {
     this.original = original;
   }
 
   public void clean() {
-    SqlSession sqlSession = sqlSessionBox.get(); 
+    SqlSession sqlSession = sqlSessionBox.get();
     if (sqlSession != null) {
       sqlSession.close();
       sqlSession.rollback();

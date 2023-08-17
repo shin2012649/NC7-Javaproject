@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    // 서브 프로젝트의 클래스를 사용하기
+        // 서브 프로젝트의 클래스를 사용하기
     implementation project(':app-common')
     
     // MySQL JDBC Driver
@@ -31,14 +31,18 @@ dependencies {
     // Mybatis 라이브러리
     implementation 'org.mybatis:mybatis:3.5.13'
   
-    // Reactor Netty 프레임워크
-    //implementation platform('io.projectreactor:reactor-bom:2022.0.9') 
-    //implementation 'io.projectreactor.netty:reactor-netty-core' 
-    //implementation 'io.projectreactor.netty:reactor-netty-http'
-   
     // Servlet API 
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
-  
+        
+    // multipart/form-data 처리 라이브러리
+    //implementation 'commons-fileupload:commons-fileupload:1.5' // Servlet API 로 대체    
+        
+    // 임베디드 Tomcat 서버
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.79'
+
+    // Amazon AWS Java SDK s3
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.530'
+    
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
     implementation 'com.google.guava:guava:31.1-jre'
 }

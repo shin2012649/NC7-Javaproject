@@ -18,9 +18,15 @@
       <result column="name"         property="name"/>
     </association>
     
+    <collection property="attachedFiles" ofType="attachedFile">
+      <id     column="board_file_no"    property="no"/>
+      <result column="filepath"         property="filePath"/>
+    </collection>
+    
   </resultMap>
 
-  <insert id="insert" parameterType="board">
+ <insert id="insert" parameterType="board"
+          useGeneratedKeys="true" keyColumn="board_no" keyProperty="no">
     insert into javaproject_board(title,content,writer,category)
     values(#{title},#{content},#{writer.no},#{category})
   </insert>
@@ -54,6 +60,7 @@
       p.name
     from
       javaproject_board b inner join javaproject_participant p on b.writer=p.participant_no
+      left outer join javaproject_board_file f on b.board_no=f.board_no
     where
       category=#{categoryNo}
       and board_no=#{boardNo}

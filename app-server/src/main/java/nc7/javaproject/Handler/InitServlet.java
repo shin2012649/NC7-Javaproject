@@ -6,11 +6,11 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import nc7.javaproject.dao.BoardDao;
-import nc7.javaproject.dao.EventDao;
 import nc7.javaproject.dao.MySQLBoardDao;
 import nc7.javaproject.dao.MySQLParticipantDao;
-import nc7.javaproject.dao.MySqlEventDao;
 import nc7.javaproject.dao.ParticipantDao;
+import nc7.util.NcpConfig;
+import nc7.util.NcpObjectStorageService;
 import nc7.util.SqlSessionFactoryProxy;
 
 @WebServlet(
@@ -19,12 +19,12 @@ import nc7.util.SqlSessionFactoryProxy;
     )
 public class InitServlet extends HttpServlet {
 
-  
   private static final long serialVersionUID = 1L;
+
   public static SqlSessionFactory sqlSessionFactory;
   public static BoardDao boardDao;
   public static ParticipantDao participantDao;
-  public static EventDao eventDao;
+  public static NcpObjectStorageService ncpObjectStorageService;
   
   
   @Override
@@ -38,7 +38,7 @@ public class InitServlet extends HttpServlet {
 
       boardDao = new MySQLBoardDao(sqlSessionFactory);
       participantDao = new MySQLParticipantDao(sqlSessionFactory);
-      eventDao = new MySqlEventDao(sqlSessionFactory);
+      ncpObjectStorageService = new NcpObjectStorageService(new NcpConfig());
 
     } catch (Exception e) {
       System.out.println("InitServlet.init() 실행 중 오류 발생!");
