@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>시사회 참석자</title>
+</head>
+<body>
+<h1> 영화A 시사회</h1>
+<form action='/participant/add' method="post">
+<table border="1">
+<tr>
+  <th>이름</th> <td style="width:200px;"><input type='text' name='name'></td>
+</tr>
+<tr>
+  <th>나이</th> <td><input type='number' name='age'></td>
+</tr>
+<tr>
+  <th>암호</th> <td><input type='password' name='password'></td>
+</tr>
+<tr>
+  <th>성별</th> 
+  <td>
+    <select name="gender">
+      <option value="M">남자</option>
+      <option value="W">여자</option>
+    </select>  
+  </td>
+</tr>
+<tr>
+  <th>영화  재관람 의사(Y/N)?</th>
+  <td>
+    <input type='radio' name='movieAttendance' value='Y'>예
+    <input type='radio' name='movieAttendance' value='N'>아니오
+  </td>
+</tr>
+<tr>
+  <th>영화 A에 대한 평점(1-5)?</th>
+  <td><input type='number' name='movieRating' min='1' max='5'></td>
+</tr>
+<tr>
+  <th>추가 정보</th>
+  <td><input type='text' name='additionalInfo'></td>
+</tr>
+</table>
+<button>등록</button>
+</form>
+</body>
+</html>
