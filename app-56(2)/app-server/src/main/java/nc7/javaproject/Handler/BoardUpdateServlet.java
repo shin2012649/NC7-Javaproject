@@ -1,4 +1,4 @@
-package nc7.javaproject.Handler;
+package nc7.javaproject.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;

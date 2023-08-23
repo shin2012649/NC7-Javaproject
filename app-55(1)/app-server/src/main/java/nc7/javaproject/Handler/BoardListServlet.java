@@ -1,4 +1,4 @@
-package nc7.javaproject.Handler;
+package nc7.javaproject.handler;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.List;

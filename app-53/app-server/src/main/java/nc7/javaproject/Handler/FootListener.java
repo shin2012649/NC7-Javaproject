@@ -1,4 +1,4 @@
-package nc7.javaproject.Handler;
+package nc7.javaproject.handler;
 
 import nc7.util.ActionListener;
 import nc7.util.BreadcrumbPrompt;

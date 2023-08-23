@@ -1,4 +1,4 @@
-package nc7.javaproject.Handler;
+package nc7.javaproject.handler;
 import java.io.PrintWriter;
 import java.util.List;
 import nc7.javaproject.dao.ParticipantDao;

@@ -3,7 +3,7 @@ package nc7.javaproject.listener;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
-import nc7.javaproject.Handler.InitServlet;
+import nc7.javaproject.handler.InitServlet;
 import nc7.util.SqlSessionFactoryProxy;
 
 //요청이나 응답을 수행했을 때 서블릿 컨테이너로부터 알림을 받는 옵저버 객체

@@ -1,4 +1,4 @@
-package nc7.javaproject.Handler;
+package nc7.javaproject.handler;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

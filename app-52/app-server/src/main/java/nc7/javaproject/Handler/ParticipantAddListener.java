@@ -1,4 +1,4 @@
-package nc7.javaproject.Handler;
+package nc7.javaproject.handler;
 import java.io.IOException;
 import org.apache.ibatis.session.SqlSessionFactory;
 import nc7.javaproject.dao.ParticipantDao;
