@@ -1,11 +1,9 @@
 package nc7.javaproject.dao;
 
 import java.util.List;
-
-import nc7.javaproject.vo.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-
+import nc7.javaproject.vo.User;
 
 public class MySQLUserDao implements UserDao {
 

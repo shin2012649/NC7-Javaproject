@@ -44,10 +44,10 @@
     b.view_count,
     b.created_date,
     b.category,
-    m.user_no,
-    m.name
+    u.user_no,
+    u.name
     from
-    javaproject_board b inner join javaproject_user m on b.writer=m.user_no
+    javaproject_board b inner join javaproject_user u on b.writer=u.user_no
     where
     category=#{categoryNo}
     order by
@@ -62,12 +62,12 @@
     b.view_count,
     b.created_date,
     b.category,
-    m.user_no,
-    m.name,
+    u.user_no,
+    u.name,
     f.board_file_no,
     f.filepath
     from
-    javaproject_board b inner join javaproject_user m on b.writer=m.user_no
+    javaproject_board b inner join javaproject_user u on b.writer=u.user_no
     left outer join javaproject_board_file f on b.board_no=f.board_no
     where
     b.category=#{categoryNo}
@@ -121,6 +121,12 @@
     delete from javaproject_board_file
     where
     board_file_no=#{no}
+  </delete>
+
+  <delete id="deleteFiles" parameterType="int">
+    delete from javaproject_board_file
+    where
+    board_no=#{no}
   </delete>
 </mapper>
 

@@ -2,9 +2,6 @@ package nc7.javaproject.vo;
 
 import java.io.Serializable;
 
-
-import java.io.Serializable;
-
 public class AttachedFile implements Serializable {
   private static final long serialVersionUID = 1L;
 

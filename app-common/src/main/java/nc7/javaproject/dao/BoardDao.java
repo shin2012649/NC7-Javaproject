@@ -1,9 +1,9 @@
 package nc7.javaproject.dao;
 
-import java.util.List;
+
 import nc7.javaproject.vo.AttachedFile;
 import nc7.javaproject.vo.Board;
-
+import java.util.List;
 
 public interface BoardDao {
   void insert(Board board);
@@ -16,4 +16,5 @@ public interface BoardDao {
   int insertFiles(Board board);
   AttachedFile findFileBy(int no);
   int deleteFile(int fileNo);
+  int deleteFiles(int boardNo);
 }

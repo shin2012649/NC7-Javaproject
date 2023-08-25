@@ -3,10 +3,10 @@ package nc7.javaproject.dao;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import nc7.javaproject.vo.AttachedFile;
 import nc7.javaproject.vo.Board;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 
 public class MySQLBoardDao implements BoardDao {
@@ -75,6 +75,12 @@ public class MySQLBoardDao implements BoardDao {
   public int deleteFile(int no) {
     SqlSession sqlSession = sqlSessionFactory.openSession(false);
     return sqlSession.delete("nc7.javaproject.dao.BoardDao.deleteFile", no);
+  }
+
+  @Override
+  public int deleteFiles(int boardNo) {
+    SqlSession sqlSession = sqlSessionFactory.openSession(false);
+    return sqlSession.delete("nc7.javaproject.dao.BoardDao.deleteFiles", boardNo);
   }
 
 }
