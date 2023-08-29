@@ -64,7 +64,7 @@
 <jsp:include page="../header.jsp"/>
 
 <h1>회원</h1>
-<form action='/user/add.jsp' method='post' enctype='multipart/form-data'>
+<form action='/user/add' method='post' enctype='multipart/form-data'>
 <table>
 <tr>
   <th>이름</th> <td><input type='text' name='name'></td>

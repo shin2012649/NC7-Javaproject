@@ -77,21 +77,17 @@
 
 <h1>로그인</h1>
 
-<form action='/auth/login.jsp' method='post'>
-<table>
+<form action='/auth/login' method='post'>
+<table border='1'>
 <tr>
-  <th>이메일</th>
-  <td><input type='email' name='email' value='${cookie.email.value}'></td>
+  <th>이메일</th> <td><input type='email' name='email' value='${cookie.email.value}'></td>
 </tr>
 <tr>
-  <th>암호</th>
-  <td><input type='password' name='password'></td>
+  <th>암호</th> <td><input type='password' name='password'></td>
 </tr>
 </table>
-<div class="login-controls">
-    <label><input type='checkbox' name='saveEmail' ${cookie.email != null ? "checked" : ""}> 이메일 저장</label>
-    <button>로그인</button>
-</div>
+<button>로그인</button>
+ <input type='checkbox' name='saveEmail' ${cookie.email != null ? "checked" : ""}> 이메일 저장
 </form>
 
 <jsp:include page="../footer.jsp"/>
