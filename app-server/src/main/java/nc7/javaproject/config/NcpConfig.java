@@ -1,4 +1,4 @@
-package nc7.util;
+package nc7.javaproject.config;
 
 public class NcpConfig {
   private String endPoint = "https://kr.object.ncloudstorage.com";

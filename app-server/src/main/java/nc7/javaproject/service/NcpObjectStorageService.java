@@ -1,4 +1,4 @@
-package nc7.util;
+package nc7.javaproject.service;
 
 import java.io.InputStream;
 import java.util.UUID;
@@ -11,6 +11,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import nc7.javaproject.config.NcpConfig;
 
 public class NcpObjectStorageService {
   final AmazonS3 s3;
