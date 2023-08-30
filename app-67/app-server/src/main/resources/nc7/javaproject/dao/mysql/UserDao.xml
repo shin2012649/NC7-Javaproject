@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nc7.javaproject.dao.UserDao">
+
+    <!-- 결과 레코드의 컬럼 값을 자바 객체에 어떻게 담을 것인지 설정한다. -->
+    <resultMap type="user" id="userMap">
+        <id     column="user_no"    property="no"/>
+        <result column="name"         property="name"/>
+        <result column="email"        property="email"/>
+        <result column="password"     property="password"/>
+        <result column="gender"       property="gender"/>
+        <result column="created_date" property="createdDate"/>
+        <result column="photo"        property="photo"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="user">
+        insert into javaproject_user(name,email,password,gender,photo)
+        values(#{name},#{email},sha1(#{password}),#{gender},#{photo})
+    </insert>
+
+    <select id="findAll" resultMap="userMap">
+        select
+        user_no,
+        name,
+        email,
+        photo
+        from
+        javaproject_user
+        order by
+        name asc
+    </select>
+
+    <select id="findBy" parameterType="int" resultMap="userMap">
+        select
+        user_no,
+        name,
+        email,
+        gender,
+        created_date,
+        photo
+        from
+        javaproject_user
+        where
+        user_no=#{no}
+    </select>
+
+    <select id="findByEmailAndPassword" parameterType="user" resultMap="userMap">
+        select
+        user_no,
+        name,
+        email,
+        gender,
+        created_date,
+        photo
+        from
+        javaproject_user
+        where
+        email=#{email}
+        and password=sha1(#{password})
+    </select>
+
+    <update id="update" parameterType="user">
+        update javaproject_user set
+        name=#{name}
+        ,email=#{email}
+        ,password=sha1(#{password})
+        ,gender=#{gender}
+        <if test="photo != null">
+            ,photo=#{photo}
+        </if>
+        where
+        user_no=#{no}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from javaproject_user
+        where
+        user_no=#{no}
+    </delete>
+</mapper>
+
+
+
+
+
