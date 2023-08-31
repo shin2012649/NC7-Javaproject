@@ -1,4 +1,4 @@
-package bitcamp.myapp.controller;
+package nc7.javaproject.controller;
 
 import nc7.javaproject.controller.PageController;
 import org.springframework.stereotype.Component;

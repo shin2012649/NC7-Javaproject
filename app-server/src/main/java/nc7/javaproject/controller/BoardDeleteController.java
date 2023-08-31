@@ -4,6 +4,7 @@ package nc7.javaproject.controller;
 import nc7.javaproject.controller.PageController;
 import nc7.javaproject.dao.BoardDao;
 import nc7.javaproject.vo.Board;
+import nc7.javaproject.vo.User;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Component;
 

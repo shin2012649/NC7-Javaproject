@@ -4,6 +4,7 @@ package nc7.javaproject.controller;
 
 import nc7.javaproject.dao.UserDao;
 import nc7.javaproject.vo.User;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

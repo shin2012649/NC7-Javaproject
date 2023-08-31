@@ -2,6 +2,8 @@ package nc7.javaproject.controller;
 
 
 
+import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
