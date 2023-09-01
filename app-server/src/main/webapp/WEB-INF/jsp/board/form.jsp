@@ -52,7 +52,7 @@
 <jsp:include page="../header.jsp"/>
 
 <h1>게시글</h1>
-<form action='/board/add' method='post' enctype='multipart/form-data'>
+<form action='add' method='post' enctype='multipart/form-data'>
     <label for="title">제목</label>
     <input type='text' name='title' id="title">
     <br>

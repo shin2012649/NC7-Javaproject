@@ -1,7 +1,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'java-library'
-    id 'eclipse-wtp'
+//    id 'eclipse-wtp'
 }
 
 repositories {
@@ -10,16 +10,17 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-      // MySQL JDBC Driver
-       // MySQL JDBC Driver
-      implementation 'com.google.code.gson:gson:2.10.1'
-  
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
-    implementation 'com.google.guava:guava:31.1-jre'
-    
+    // Google JSON 라이브러리
+    implementation 'com.google.code.gson:gson:2.10.1'
+
     // Mybatis 라이브러리
     implementation 'org.mybatis:mybatis:3.5.13'
+
+    // Mybatis의 Spring 연동 라이브러리
+    implementation 'org.mybatis:mybatis-spring:3.0.2'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    implementation 'com.google.guava:guava:31.1-jre'
 }
  
      
@@ -55,13 +56,12 @@ tasks.withType(JavaCompile) {
 }
 
 // eclipse 프로젝트 이름을 설정하기
-eclipse {
-    project {
-        name = "JavaProject-common"
-    }
-    jdt {
-      sourceCompatibility = 17
-      targetCompatibility = 17
-      javaRuntimeName = "JavaSE-17"
-    }
-}
+//eclipse {
+//    project {
+//        name = "JavaProject-common"
+//    }
+//    jdt {
+//      sourceCompatibility = 17
+//      targetCompatibility = 17
+//      javaRuntimeName = "JavaSE-17"
+//    }
