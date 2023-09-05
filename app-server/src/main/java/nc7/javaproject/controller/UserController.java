@@ -84,7 +84,7 @@ public class UserController {
           @RequestParam("photofile") Part photofile,
           Map<String,Object> model) throws Exception {
     try {
-      if (photofile.getSize() > 0) {
+      if (photofile != null && photofile.getSize() > 0) {
         String uploadFileUrl = ncpObjectStorageService.uploadFile(
                 "bitcamp-bucket-05", "user/", photofile);
         user.setPhoto(uploadFileUrl);

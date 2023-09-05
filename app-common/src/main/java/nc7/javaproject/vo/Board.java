@@ -1,6 +1,5 @@
 package nc7.javaproject.vo;
 
-import nc7.javaproject.vo.AttachedFile;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
