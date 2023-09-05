@@ -3,17 +3,16 @@ package nc7.javaproject.dao;
 
 import nc7.javaproject.vo.AttachedFile;
 import nc7.javaproject.vo.Board;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface BoardDao {
-  void insert(Board board);
+  int insert(Board board);
   List<Board> findAll(int category);
-  Board findBy(@Param("categoryNo") int category, @Param("boardNo") int no);
+  Board findBy(int no);
   int update(Board board);
-  int updateCount(Board board);
-  int delete(Board board);
+  int updateCount(int no);
+  int delete(int no);
 
   int insertFiles(Board board);
   AttachedFile findFileBy(int no);
