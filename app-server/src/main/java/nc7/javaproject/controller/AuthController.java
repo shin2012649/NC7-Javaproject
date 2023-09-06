@@ -5,7 +5,8 @@ import nc7.javaproject.service.UserService;
 import nc7.javaproject.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import nc7.javaproject.service.UserService;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,8 +15,13 @@ import java.util.Map;
 @Controller
 public class AuthController {
 
+    {
+        System.out.println("AuthController 생성됨! ");
+    }
     @Autowired
     UserService userService;
+
+
 
     @RequestMapping("/auth/form")
     public String form() {
@@ -24,9 +30,9 @@ public class AuthController {
 
     @RequestMapping("/auth/login")
     public String login(
-            @RequestParam("email") String email,
-            @RequestParam("password") String password,
-            @RequestParam("saveEmail") String saveEmail,
+            String email,
+            String password,
+            String saveEmail,
             HttpSession session,
             Map<String,Object> model,
             HttpServletResponse response) throws Exception {

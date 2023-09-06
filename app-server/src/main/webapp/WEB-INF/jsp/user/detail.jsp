@@ -88,7 +88,7 @@
             <img src='http://qjeteawhqfgf19010749.cdn.ntruss.com/user/${user.photo}?type=f&w=60&h=80&faceopt=true&ttype=jpg'>
           </a>
         </c:if>
-          <input type='file' name='photo'></td></tr>
+          <input type='file' name='photofile'></td></tr>
   <tr>
       <th style='width:120px;'>번호</th>
       <td style='width:300px;'><input type='text' name='no' value='${user.no}' readonly></td></tr>

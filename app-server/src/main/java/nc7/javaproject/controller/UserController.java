@@ -1,17 +1,21 @@
 package nc7.javaproject.controller;
 
-
 import nc7.javaproject.service.NcpObjectStorageService;
 import nc7.javaproject.service.UserService;
 import nc7.javaproject.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.Part;
 import java.util.Map;
 
 @Controller
 public class UserController {
+
+  {
+    System.out.println("UserController 생성됨!");
+  }
 
   @Autowired
   UserService userService;
@@ -27,7 +31,7 @@ public class UserController {
   @RequestMapping("/user/add")
   public String add(
           User user,
-          @RequestParam("photofile") Part photofile,
+          Part photofile,
           Map<String,Object> model) throws Exception {
 
     try {
@@ -49,7 +53,7 @@ public class UserController {
 
   @RequestMapping("/user/delete")
   public String delete(
-          @RequestParam("no") int no,
+          int no,
           Map<String,Object> model) throws Exception {
 
     try {
@@ -66,7 +70,7 @@ public class UserController {
 
   @RequestMapping("/user/detail")
   public String detail(
-          @RequestParam("no") int no,
+          int no,
           Map<String,Object> model) throws Exception {
     model.put("user", userService.get(no));
     return "/WEB-INF/jsp/user/detail.jsp";
@@ -81,10 +85,10 @@ public class UserController {
   @RequestMapping("/user/update")
   public String update(
           User user,
-          @RequestParam("photofile") Part photofile,
+          Part photofile,
           Map<String,Object> model) throws Exception {
     try {
-      if (photofile != null && photofile.getSize() > 0) {
+      if (photofile.getSize() > 0) {
         String uploadFileUrl = ncpObjectStorageService.uploadFile(
                 "bitcamp-bucket-05", "user/", photofile);
         user.setPhoto(uploadFileUrl);
