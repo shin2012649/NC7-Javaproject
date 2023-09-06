@@ -11,6 +11,7 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 @ComponentScan(
         basePackages = "nc7.javaproject.controller",
         excludeFilters = {
+
                 @ComponentScan.Filter(type = FilterType.REGEX,pattern  = ".*BoardController"),
                 @ComponentScan.Filter(type = FilterType.REGEX,pattern  = ".*HomeController"),
                 @ComponentScan.Filter(type = FilterType.REGEX,pattern  = ".*AuthController")

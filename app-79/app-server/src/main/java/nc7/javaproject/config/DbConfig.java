@@ -18,7 +18,6 @@ public class DbConfig {
         System.out.println("DbConfig() 호출됨!");
     }
 
-
     @Bean
     public DataSource dataSource(
             @Value("${jdbc.driver}") String driver,

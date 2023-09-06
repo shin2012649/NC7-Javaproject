@@ -7,38 +7,38 @@ import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration;
 
-public class AdminWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class AppWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-    public AdminWebApplicationInitializer() {
-        System.out.println("AdminWebApplicationInitializer 생성됨!");
+    public AppWebApplicationInitializer() {
+        System.out.println("AppWebApplicationInitializer 생성됨!");
     }
 
     @Override
     protected String getServletName() {
-        return "admin";
+        return "app";
     }
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-
-        return null;
+        // ContextLoaderListener의 IoC 컨테이너가 사용할 java config 클래스를 지정한다.
+        return new Class[] {RootConfig.class, DbConfig.class, MybatisConfig.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
         // DispatcherServlet의 IoC 컨테이너가 사용할 java config 클래스를 지정한다.
-        return new Class[] {AdminConfig.class};
+        return new Class[] {AppConfig.class};
     }
 
     @Override
     protected String[] getServletMappings() {
         // DispatcherServlet의 URL을 지정한다.
-        return new String[] {"/admin/*"};
+        return new String[] {"/app/*"};
     }
 
     @Override
-    protected void  customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setMultipartConfig(new MultipartConfigElement(null , 10000000, 15000000, 1000000));
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        registration.setMultipartConfig(new MultipartConfigElement(null, 10000000, 15000000, 1000000));
     }
 
     @Override

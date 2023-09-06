@@ -3,7 +3,6 @@ package nc7.javaproject.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
-
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
@@ -11,18 +10,20 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 //
 @ComponentScan(
         basePackages = "nc7.javaproject.controller",
-        excludeFilters = @ComponentScan.Filter(
-                type = FilterType.REGEX,
-                pattern = "nc7.javaproject.controller.UserController"
-        )
+        excludeFilters = {
+                @ComponentScan.Filter(type = FilterType.REGEX,pattern  = ".*BoardController"),
+                @ComponentScan.Filter(type = FilterType.REGEX,pattern  = ".*HomeController"),
+                @ComponentScan.Filter(type = FilterType.REGEX,pattern  = ".*AuthController")
+        }
 )
-public class AppConfig {
-    public AppConfig() {
-        System.out.println("AppConfig() 호출됨!");
+public class AdminConfig {
+    public AdminConfig() {
+        System.out.println("AdminConfig() 호출됨!");
     }
 
     @Bean
     public MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
+
     }
 }

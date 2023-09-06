@@ -37,7 +37,7 @@ public class AdminWebApplicationInitializer extends AbstractAnnotationConfigDisp
     }
 
     @Override
-    protected void  customizeRegistration(ServletRegistration.Dynamic registration) {
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
         registration.setMultipartConfig(new MultipartConfigElement(null , 10000000, 15000000, 1000000));
     }
 
