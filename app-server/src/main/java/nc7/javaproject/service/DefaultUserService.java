@@ -1,6 +1,8 @@
 package nc7.javaproject.service;
 
+
 import nc7.javaproject.dao.UserDao;
+import nc7.javaproject.service.UserService;
 import nc7.javaproject.vo.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +11,6 @@ import java.util.List;
 
 @Service
 public class DefaultUserService implements UserService {
-
     {
         System.out.println("DefaultUserService 생성됨!");
     }

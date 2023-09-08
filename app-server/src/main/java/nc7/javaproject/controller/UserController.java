@@ -1,16 +1,20 @@
 package nc7.javaproject.controller;
 
+
 import nc7.javaproject.service.NcpObjectStorageService;
 import nc7.javaproject.service.UserService;
 import nc7.javaproject.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.Part;
-import java.util.Map;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
   {
@@ -23,16 +27,15 @@ public class UserController {
   @Autowired
   NcpObjectStorageService ncpObjectStorageService;
 
-  @RequestMapping("/user/form")
-  public String add() {
-    return "/WEB-INF/jsp/user/form.jsp";
+  @GetMapping("form")
+  public void form() {
   }
 
-  @RequestMapping("/user/add")
+  @PostMapping("add")
   public String add(
           User user,
-          Part photofile,
-          Map<String,Object> model) throws Exception {
+          MultipartFile photofile,
+          Model model) throws Exception {
 
     try {
       System.out.println(user);
@@ -45,16 +48,16 @@ public class UserController {
       return "redirect:list";
 
     } catch (Exception e) {
-      model.put("message", "회원 등록 오류!");
-      model.put("refresh", "2;url=list");
+      model.addAttribute("message", "회원 등록 오류!");
+      model.addAttribute("refresh", "2;url=list");
       throw e;
     }
   }
 
-  @RequestMapping("/user/delete")
+  @GetMapping("delete")
   public String delete(
           int no,
-          Map<String,Object> model) throws Exception {
+          Model model) throws Exception {
 
     try {
       if (userService.delete(no) == 0) {
@@ -63,30 +66,29 @@ public class UserController {
         return "redirect:list";
       }
     } catch (Exception e) {
-      model.put("refresh", "2;url=list");
+      model.addAttribute("refresh", "2;url=list");
       throw e;
     }
   }
 
-  @RequestMapping("/user/detail")
+  @GetMapping("{no}")
   public String detail(
-          int no,
-          Map<String,Object> model) throws Exception {
-    model.put("user", userService.get(no));
-    return "/WEB-INF/jsp/user/detail.jsp";
+          @PathVariable int no,
+          Model model) throws Exception {
+    model.addAttribute("user", userService.get(no));
+    return "user/detail";
   }
 
-  @RequestMapping("/user/list")
-  public String list(Map<String,Object> model) throws Exception {
-    model.put("list", userService.list());
-    return "/WEB-INF/jsp/user/list.jsp";
+  @GetMapping("list")
+  public void list(Model model) throws Exception {
+    model.addAttribute("list", userService.list());
   }
 
-  @RequestMapping("/user/update")
+  @PostMapping("update")
   public String update(
           User user,
-          Part photofile,
-          Map<String,Object> model) throws Exception {
+          MultipartFile photofile,
+          Model model) throws Exception {
     try {
       if (photofile.getSize() > 0) {
         String uploadFileUrl = ncpObjectStorageService.uploadFile(
@@ -101,7 +103,7 @@ public class UserController {
       }
 
     } catch (Exception e) {
-      model.put("refresh", "2;url=list");
+      model.addAttribute("refresh", "2;url=list");
       throw e;
     }
   }

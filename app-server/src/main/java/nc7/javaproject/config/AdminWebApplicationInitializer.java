@@ -1,5 +1,6 @@
 package nc7.javaproject.config;
 
+import nc7.javaproject.config.AdminConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -20,7 +21,9 @@ public class AdminWebApplicationInitializer extends AbstractAnnotationConfigDisp
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-
+        // ContextLoaderListener의 IoC 컨테이너가 사용할 java config 클래스를 지정한다.
+        // => AppWebApplicationInitializer에서 RootConfig를 가지고 ContextLoaderListener를 만들었기 때문에
+        //    여기에서는 설정하지 않는다.
         return null;
     }
 
@@ -37,7 +40,7 @@ public class AdminWebApplicationInitializer extends AbstractAnnotationConfigDisp
     }
 
     @Override
-    protected void  customizeRegistration(ServletRegistration.Dynamic registration) {
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
         registration.setMultipartConfig(new MultipartConfigElement(null , 10000000, 15000000, 1000000));
     }
 

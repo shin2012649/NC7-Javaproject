@@ -1,5 +1,6 @@
 package nc7.javaproject.service;
 
+
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
@@ -10,8 +11,8 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import nc7.javaproject.config.NcpConfig;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.Part;
 import java.io.InputStream;
 import java.util.UUID;
 
@@ -29,7 +30,7 @@ public class NcpObjectStorageService {
             .build();
   }
 
-  public String uploadFile(String bucketName, String dirPath, Part part) {
+  public String uploadFile(String bucketName, String dirPath, MultipartFile part) {
     if (part.getSize() == 0) {
       return null;
     }

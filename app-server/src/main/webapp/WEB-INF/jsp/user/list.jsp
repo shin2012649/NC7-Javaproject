@@ -27,7 +27,7 @@
         <td>${user.no}</td>
         <td>
             <img src='http://qjeteawhqfgf19010749.cdn.ntruss.com/user/${user.photo}?type=f&w=30&h=40&faceopt=true&ttype=jpg'>
-            <a href='detail?no=${user.no}'>${user.name}</a></td>
+            <a href='${user.no}'>${user.name}</a></td>
         <td>${user.email}</td>
     </tr>
 </c:forEach>

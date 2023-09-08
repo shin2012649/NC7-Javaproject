@@ -62,7 +62,7 @@
     <label for="files">파일</label>
     <input type='file' name='files' multiple id="files">
     <br>
-    <input type='hidden' name='category' value='1'>
+   <input type='hidden' name='category' value='${param.category}'>
     <button>등록</button>
 </form>
 
