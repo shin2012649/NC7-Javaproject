@@ -5,6 +5,7 @@ import nc7.javaproject.service.BoardService;
 import nc7.javaproject.service.NcpObjectStorageService;
 import nc7.javaproject.vo.AttachedFile;
 import nc7.javaproject.vo.Board;
+import nc7.javaproject.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-import nc7.javaproject.vo.User;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;

@@ -2,7 +2,6 @@ package nc7.javaproject.service;
 
 
 import nc7.javaproject.dao.BoardDao;
-import nc7.javaproject.service.BoardService;
 import nc7.javaproject.vo.AttachedFile;
 import nc7.javaproject.vo.Board;
 import org.springframework.stereotype.Service;
